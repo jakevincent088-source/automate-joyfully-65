@@ -1,58 +1,52 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageHero, Section, GlassCard } from "../components/ui-primitives";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
     meta: [
-      { title: "Resources — Automation Templates & SOPs" },
-      { name: "description", content: "Free downloads: CRM setup checklist, workflow templates, AI prompt library, and GoHighLevel SOPs." },
-      { property: "og:title", content: "Resources — Jake Vincent Talaba" },
-      { property: "og:description", content: "Automation planning worksheets and templates for operators." },
+      { title: "Resources — CRM & Automation Templates" },
+      { name: "description", content: "Free CRM checklists, automation audit templates, workflow docs, AI prompt library, and SOP templates." },
+      { property: "og:title", content: "Resources" },
+      { property: "og:description", content: "Templates and tools to accelerate your automation build." },
     ],
   }),
   component: Resources,
 });
 
 const resources = [
-  { tag: "PDF", title: "CRM Setup Checklist", desc: "The 47-point checklist I use for every new GoHighLevel deployment.", size: "1.2 MB" },
-  { tag: "DOC", title: "Workflow Documentation Template", desc: "Structured template for documenting any automation workflow.", size: "340 KB" },
-  { tag: "TXT", title: "AI Prompt Library", desc: "Battle-tested prompts for lead qualification, support, and sales.", size: "88 KB" },
-  { tag: "PDF", title: "GoHighLevel SOPs", desc: "Standard operating procedures for pipelines, funnels, and calendars.", size: "2.1 MB" },
-  { tag: "XLS", title: "Automation Planning Worksheet", desc: "Map out triggers, actions, and conditions before you build.", size: "420 KB" },
-  { tag: "PDF", title: "Missed Call Text-Back Playbook", desc: "Full automation blueprint including copy and timing.", size: "780 KB" },
+  { t: "CRM Checklist", d: "40-point audit checklist for any CRM setup.", type: "PDF" },
+  { t: "Automation Audit Template", d: "Map your current automations, gaps, and wins.", type: "Sheet" },
+  { t: "Workflow Documentation Template", d: "Standard format for maintainable workflow docs.", type: "Doc" },
+  { t: "AI Prompt Library", d: "Battle-tested prompts for CRM, support, and ops.", type: "Notion" },
+  { t: "SOP Templates", d: "Repeatable SOP scaffolds for support & ops teams.", type: "Doc" },
+  { t: "GoHighLevel Snapshot", d: "Ready-to-import GHL snapshot (future release).", type: "Snapshot" },
 ];
 
 function Resources() {
   return (
     <div>
-      <section className="pt-20 pb-16 grid-bg border-b border-border">
-        <div className="max-w-4xl mx-auto px-6">
-          <span className="font-mono text-xs text-primary uppercase">[ downloads.dir ]</span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tighter mt-4 mb-6">Resources</h1>
-          <p className="text-lg text-muted max-w-2xl">
-            Free tools I actually use in client engagements. No email required.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-4">
+      <PageHero
+        eyebrow="Resources"
+        title={<>Templates that <span className="gradient-text">save you weeks</span>.</>}
+        sub="Battle-tested checklists, docs, and prompt libraries. Free to use in your business."
+      />
+      <Section>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {resources.map((r) => (
-            <div key={r.title} className="glass-card p-6 rounded-lg flex items-start gap-4 hover:border-primary/40 group transition-all">
-              <div className="size-12 shrink-0 rounded bg-primary/10 border border-primary/20 grid place-items-center font-mono text-[10px] font-bold text-primary">
-                {r.tag}
+            <GlassCard key={r.t}>
+              <div className="flex items-center justify-between">
+                <div className="text-[10px] font-mono uppercase tracking-widest text-primary">{r.type}</div>
+                <span className="text-[10px] font-mono text-muted">Coming soon</span>
               </div>
-              <div className="flex-1">
-                <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">{r.title}</h3>
-                <p className="text-sm text-muted mb-3">{r.desc}</p>
-                <div className="flex items-center gap-4 text-[11px] font-mono text-muted">
-                  <span>{r.size}</span>
-                  <a href="#" className="text-primary hover:underline">[ download → ]</a>
-                </div>
-              </div>
-            </div>
+              <div className="mt-3 text-lg font-bold text-foreground">{r.t}</div>
+              <p className="mt-2 text-sm text-muted-foreground">{r.d}</p>
+              <button className="mt-4 w-full rounded-full border border-border bg-background/60 py-2 text-xs font-semibold text-foreground hover:border-primary/50 transition-colors">
+                Notify me when live
+              </button>
+            </GlassCard>
           ))}
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

@@ -1,715 +1,550 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Counter } from "@/components/counter";
+import { Counter } from "../components/counter";
+import { HeroDashboard } from "../components/hero-dashboard";
 
 export const Route = createFileRoute("/")({
-  component: Home,
+  head: () => ({
+    meta: [
+      { title: "Jake Talaba — AI Automation & CRM Systems That Scale Businesses" },
+      {
+        name: "description",
+        content:
+          "I design intelligent automation systems, GoHighLevel CRM builds, AI assistants, and workflow engineering that eliminate repetitive work and scale operations.",
+      },
+      { property: "og:title", content: "Jake Talaba — AI Automation Studio" },
+      {
+        property: "og:description",
+        content:
+          "AI automation, workflow engineering, GoHighLevel CRM, and customer support systems — built to scale.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: HomePage,
 });
 
 const industries = [
-  "Marketing Agencies",
-  "Dental Clinics",
-  "Medical Practices",
-  "Real Estate",
-  "Roofing Companies",
-  "Law Firms",
-  "Coaches & Consultants",
-  "SaaS Businesses",
-  "Home Services",
-  "Ecommerce Stores",
+  "Dental Clinics", "Marketing Agencies", "Real Estate", "Roofing", "Medical Practices",
+  "Coaches", "Consultants", "SaaS", "Home Services", "Ecommerce", "Local Services",
 ];
 
 const services = [
   {
-    tag: "AI",
+    tag: "01 / AI",
     title: "AI Automation",
-    items: [
-      "AI assistants & chatbots",
-      "AI customer support",
-      "AI lead qualification",
-      "Email AI",
-      "AI voice agents",
-      "Knowledge bases",
-      "Prompt engineering",
-    ],
+    desc: "AI assistants, chatbots, lead qualification, and knowledge bases powered by GPT & Claude.",
+    tags: ["Assistants", "Chatbots", "Prompt Engineering", "Voice AI"],
+    gradient: "from-primary to-secondary",
   },
   {
-    tag: "WKF",
+    tag: "02 / OPS",
     title: "Workflow Automation",
-    featured: true,
-    items: [
-      "Business process automation",
-      "Lead routing",
-      "Task automation",
-      "Approvals",
-      "Notifications",
-      "Internal operations",
-    ],
+    desc: "Business process automation, lead routing, approvals, and internal operational workflows.",
+    tags: ["Zapier", "Make", "n8n", "Pabbly"],
+    gradient: "from-secondary to-accent",
   },
   {
-    tag: "GHL",
+    tag: "03 / CRM",
     title: "GoHighLevel",
-    items: [
-      "CRM setup",
-      "Pipelines & calendars",
-      "Automations",
-      "Funnels & landing pages",
-      "Memberships",
-      "Snapshots",
-      "Smart lists",
-    ],
+    desc: "Complete GHL builds — pipelines, funnels, calendars, memberships, snapshots.",
+    tags: ["Pipelines", "Funnels", "Snapshots", "Memberships"],
+    gradient: "from-accent to-primary",
   },
   {
-    tag: "CRM",
+    tag: "04 / CRM",
     title: "CRM Solutions",
-    items: [
-      "CRM migration",
-      "Lead management",
-      "Sales pipelines",
-      "Customer lifecycle",
-      "Email & SMS marketing",
-      "Contact organization",
-    ],
+    desc: "Lead management, sales pipelines, customer lifecycle, segmentation, and CRM migration.",
+    tags: ["Salesforce", "HubSpot", "Zendesk", "GHL"],
+    gradient: "from-primary to-accent",
   },
   {
-    tag: "SUP",
+    tag: "05 / CS",
     title: "Customer Support Systems",
-    items: [
-      "Ticket management",
-      "Help desk setup",
-      "Live chat",
-      "Customer journey",
-      "Knowledge bases",
-      "Support automation",
-      "SOP documentation",
-    ],
+    desc: "Ticketing, knowledge bases, AI support, live chat automation, and SOP documentation.",
+    tags: ["Zendesk", "Live Chat", "Help Desk", "SOPs"],
+    gradient: "from-secondary to-primary",
   },
   {
-    tag: "API",
+    tag: "06 / API",
     title: "API & Integrations",
-    items: [
-      "Zapier",
-      "Google Workspace",
-      "Slack",
-      "Twilio",
-      "Calendly / Stripe",
-      "Airtable / Notion",
-      "Meta / HubSpot",
-    ],
+    desc: "Connect Google Workspace, Slack, Twilio, Calendly, Stripe, Airtable, Notion, HubSpot.",
+    tags: ["Twilio", "Stripe", "Slack", "Airtable"],
+    gradient: "from-accent to-secondary",
   },
 ];
 
-const processSteps = [
-  { n: "01", title: "Discovery", desc: "Understanding business goals and identifying operational bottlenecks." },
-  { n: "02", title: "Business Audit", desc: "Reviewing your CRM, workflows, and repetitive tasks." },
-  { n: "03", title: "Process Mapping", desc: "Designing an optimized workflow before implementation." },
-  { n: "04", title: "Solution Design", desc: "Selecting the best AI tools, CRM platform, and integrations." },
-  { n: "05", title: "Development", desc: "Building workflows, automations, CRM systems, and AI assistants." },
-  { n: "06", title: "Testing", desc: "Validating every automation, trigger, and customer journey." },
-  { n: "07", title: "Deployment", desc: "Launching your automation into production." },
-  { n: "08", title: "Documentation", desc: "Creating SOPs and workflow documentation." },
-  { n: "09", title: "Optimization", desc: "Monitoring and improving system performance over time." },
+const process = [
+  { n: "01", t: "Discovery Call", d: "Understand your business, goals, and bottlenecks." },
+  { n: "02", t: "Business Analysis", d: "Map every workflow, tool, and data flow currently in play." },
+  { n: "03", t: "Workflow Planning", d: "Design the target-state processes and automation architecture." },
+  { n: "04", t: "Solution Architecture", d: "Select tools, integrations, data models, and safeguards." },
+  { n: "05", t: "Development", d: "Build automations, CRM, funnels, AI agents, and integrations." },
+  { n: "06", t: "Testing", d: "Simulate real-world scenarios and validate every branch." },
+  { n: "07", t: "Deployment", d: "Roll out with training, monitoring, and safe rollbacks." },
+  { n: "08", t: "Documentation", d: "Deliver SOPs, diagrams, and video walkthroughs." },
+  { n: "09", t: "Optimization", d: "Continuous iteration based on real usage & metrics." },
 ];
 
 const projects = [
   {
-    tag: "HEALTHCARE",
-    title: "Dental Practice CRM & AI System",
-    challenge: "Manual appointment management, inconsistent lead follow-up, admin overload.",
-    solution: "End-to-end GoHighLevel CRM with sales pipelines, appointment booking, AI communication, missed-appointment recovery.",
-    stack: ["GoHighLevel", "Zapier", "ChatGPT", "Claude"],
-    outcome: "Reduced repetitive admin work and created a full customer journey from lead capture to booking.",
+    slug: "dental-practice-crm",
+    industry: "Dental",
+    title: "Dental Practice CRM & AI Automation System",
+    desc: "End-to-end GoHighLevel CRM for a simulated clinic — booking, segmentation, AI comms, and full email/SMS orchestration.",
+    stack: ["GoHighLevel", "Zapier", "Twilio", "OpenAI"],
+    color: "from-primary/40 to-secondary/40",
   },
   {
-    tag: "MULTI-INDUSTRY",
+    slug: "ai-workflow-portfolio",
+    industry: "Multi-industry",
     title: "AI Workflow Automation Portfolio",
-    challenge: "Businesses wasting time on repetitive manual tasks across departments.",
-    solution: "Workflow automations connecting CRM systems with third-party apps: routing, notifications, follow-ups, AI integration.",
-    stack: ["Zapier", "GoHighLevel", "ChatGPT", "Claude"],
-    outcome: "Improved operational efficiency and standardized business processes.",
+    desc: "A collection of automations connecting CRMs with third-party apps — lead management, follow-ups, tasks, AI ops.",
+    stack: ["Zapier", "OpenAI", "Slack", "Google"],
+    color: "from-secondary/40 to-accent/40",
   },
   {
-    tag: "MARKETING",
-    title: "CRM & Funnel Management",
-    challenge: "Disconnected customer acquisition and inconsistent lead tracking.",
-    solution: "Complete acquisition funnels: landing pages, forms, pipelines, automated follow-ups, lead routing.",
-    stack: ["GoHighLevel", "Zapier", "Google Sheets"],
-    outcome: "Improved CRM organization, lead tracking, and lifecycle management.",
+    slug: "crm-funnel-management",
+    industry: "Marketing",
+    title: "CRM & Funnel Management Project",
+    desc: "Landing pages, forms, surveys, pipelines, Smart Lists, lead routing, and automated follow-up campaigns.",
+    stack: ["GHL", "Stripe", "Calendly", "Twilio"],
+    color: "from-accent/40 to-primary/40",
   },
 ];
 
-const workflows = [
-  {
-    name: "LEAD_TO_BOOKING",
-    steps: ["Lead Form", "CRM Contact", "Pipeline", "AI Qualifier", "Booking", "SMS Reminder", "Sales Notify"],
-  },
-  {
-    name: "SUPPORT_ROUTING",
-    steps: ["Ticket In", "AI Classifier", "Priority Sort", "Agent Assign", "SLA Timer", "Resolution", "CSAT Survey"],
-  },
-  {
-    name: "MISSED_CALL_TEXTBACK",
-    steps: ["Missed Call", "Contact Lookup", "AI Response", "SMS Send", "CRM Log", "Follow-up Task"],
-  },
-  {
-    name: "REVIEW_REQUEST",
-    steps: ["Job Complete", "Wait 24h", "AI Draft", "SMS Request", "Review Posted", "Reward Trigger"],
-  },
+const techGroups = [
+  { g: "AI", items: ["ChatGPT", "Claude", "Gemini", "GHL AI", "OpenAI"] },
+  { g: "Automation", items: ["Zapier", "Make", "n8n", "Pabbly"] },
+  { g: "CRM", items: ["GoHighLevel", "Salesforce", "Zendesk", "HubSpot"] },
+  { g: "Productivity", items: ["Google WS", "Sheets", "Notion", "ClickUp", "Airtable"] },
+  { g: "Comms", items: ["Slack", "Twilio", "WhatsApp", "Discord", "Gmail"] },
 ];
-
-const techStack = {
-  AI: ["OpenAI", "Claude", "Gemini", "GHL AI"],
-  Automation: ["Zapier", "Make", "n8n", "Pabbly"],
-  CRM: ["GoHighLevel", "Salesforce", "Zendesk", "HubSpot"],
-  Productivity: ["Google Workspace", "ClickUp", "Notion", "Airtable"],
-  Communication: ["Twilio", "Slack", "WhatsApp", "Stripe"],
-};
 
 const faqs = [
-  {
-    q: "Do you work with businesses outside the Philippines?",
-    a: "Yes. I work remotely with clients globally across time zones, primarily servicing US, Canada, UK, and Australian businesses.",
-  },
-  {
-    q: "Can you optimize an existing CRM?",
-    a: "Absolutely. I audit your current setup, identify gaps, and rebuild pipelines, automations, and integrations without disrupting operations.",
-  },
-  {
-    q: "Can you automate customer support?",
-    a: "Yes — from AI-powered ticket routing and knowledge base chatbots to full support workflow automation with escalation logic.",
-  },
-  {
-    q: "Can you build AI chatbots?",
-    a: "Yes. Web chat, SMS agents, voice agents, and internal knowledge assistants trained on your business documentation.",
-  },
-  {
-    q: "Do you document every workflow?",
-    a: "Every project ships with SOPs, workflow diagrams, and video walkthroughs so your team can operate and extend the system.",
-  },
-  {
-    q: "Do you provide ongoing maintenance?",
-    a: "Yes. Retainer packages available for monitoring, tweaks, expansions, and continuous optimization after launch.",
-  },
+  { q: "What industries do you work with?", a: "Small businesses, agencies, dental & medical clinics, roofing, real estate, coaches, consultants, SaaS, ecommerce, and local service businesses." },
+  { q: "Can you optimize an existing CRM?", a: "Yes — audits, restructuring pipelines, cleaning data, adding automations, and migrating between platforms are all in scope." },
+  { q: "Do you build custom workflows?", a: "Every engagement includes bespoke workflow design tailored to your operations and tech stack." },
+  { q: "Can you integrate multiple platforms?", a: "Yes. Zapier, Make, n8n, native APIs, and webhooks — I connect whatever the business runs on." },
+  { q: "Do you build AI chatbots?", a: "Yes. Lead-qualification assistants, support agents, booking bots, and knowledge-base copilots." },
+  { q: "How long does implementation take?", a: "Small automations ship in days. Full CRM + workflow builds typically take 2–6 weeks depending on scope." },
+  { q: "Do you provide post-launch support?", a: "Yes — documentation, SOPs, monitoring dashboards, and continuous optimization retainers are available." },
 ];
 
-function Home() {
-  const [activeWorkflow, setActiveWorkflow] = useState(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-
+function HomePage() {
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative pt-20 pb-32 overflow-hidden grid-bg border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="z-10 animate-[count-up_0.6s_ease-out_both]">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-mono mb-6 uppercase tracking-wider">
-              <span className="size-1.5 bg-primary rounded-full animate-pulse" />
-              System Status: Available for Projects
+    <div className="relative">
+      {/* HERO */}
+      <section className="relative overflow-hidden grid-bg">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-primary/25 blur-[120px] animate-float" />
+          <div className="absolute -top-20 right-1/4 h-[500px] w-[500px] rounded-full bg-secondary/25 blur-[120px] animate-float" />
+          <div className="absolute top-40 left-1/2 h-[500px] w-[500px] rounded-full bg-accent/20 blur-[120px] animate-float" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-3 py-1.5 text-xs font-mono text-muted-foreground">
+              <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Available for new automation builds · Q3 2026
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter text-balance mb-8 leading-[1.05]">
-              I Build AI <span className="text-primary">Automation Systems</span> That Scale Businesses.
+            <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-foreground leading-[1.02]">
+              I Build{" "}
+              <span className="gradient-text">AI Automation</span>
+              <br />
+              Systems That{" "}
+              <span className="relative inline-block">
+                <span className="gradient-text">Scale</span>
+                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" preserveAspectRatio="none">
+                  <path d="M2,8 Q100,-2 198,6" fill="none" stroke="url(#u)" strokeWidth="3" strokeLinecap="round" />
+                  <defs>
+                    <linearGradient id="u" x1="0" x2="1">
+                      <stop offset="0%" stopColor="#2563EB" />
+                      <stop offset="50%" stopColor="#7C3AED" />
+                      <stop offset="100%" stopColor="#06B6D4" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>{" "}
+              Businesses.
             </h1>
-            <p className="text-muted text-base sm:text-lg max-w-[52ch] mb-6 leading-relaxed">
-              I help businesses eliminate repetitive tasks through AI-powered automation, CRM optimization, and workflows that improve customer experiences and operational efficiency.
+            <p className="mt-6 text-lg text-muted-foreground max-w-xl">
+              I help businesses eliminate repetitive tasks by building
+              AI-powered automation systems, optimizing CRM platforms, and
+              engineering workflows that improve customer experience and
+              operational efficiency.
             </p>
-            <p className="text-muted/80 text-sm max-w-[52ch] mb-10">
-              From AI assistants and workflow automation to GoHighLevel CRM implementation and customer support systems — scalable solutions that save time and increase productivity.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/contact" className="px-6 py-3 bg-primary text-primary-foreground font-bold rounded-sm hover:bg-primary/90 transition-all text-sm">
-                Book a Discovery Call
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-white overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent" />
+                <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent blur-lg opacity-70" />
+                <span className="relative">Book a Discovery Call</span>
+                <span className="relative">→</span>
               </Link>
-              <Link to="/portfolio" className="px-6 py-3 border border-border bg-white/5 font-bold rounded-sm hover:bg-white/10 transition-all text-sm">
+              <Link
+                to="/portfolio"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 transition-colors"
+              >
                 View Portfolio
               </Link>
-              <a href="#" className="px-6 py-3 text-muted hover:text-foreground font-mono text-xs uppercase tracking-widest flex items-center">
-                → Resume.pdf
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Download Resume ↓
               </a>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-6 mt-14 pt-8 border-t border-border">
-              <Stat value={<Counter end={3} suffix="+" />} label="Years CS" />
-              <Stat value={<Counter end={15} suffix="+" />} label="Projects" accent />
-              <Stat value={<Counter end={30} suffix="+" />} label="Workflows" />
-              <Stat value={<Counter end={8} suffix="+" />} label="CRM Tools" accent />
-              <Stat value={<Counter end={100} suffix="%" />} label="QA Score" />
-            </div>
-          </div>
-
-          {/* Dashboard visual */}
-          <div className="relative animate-[count-up_0.8s_ease-out_both] [animation-delay:400ms]">
-            <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full" />
-            <div className="relative glass-card p-4 rounded-xl shadow-2xl overflow-hidden">
-              <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="size-2 rounded-full bg-red-500/50" />
-                    <div className="size-2 rounded-full bg-yellow-500/50" />
-                    <div className="size-2 rounded-full bg-green-500/50" />
-                  </div>
-                  <span className="text-[10px] font-mono text-muted ml-2">CORE_SYSTEM.LOG</span>
-                </div>
-                <span className="text-[10px] font-mono text-primary flex items-center gap-1">
-                  <span className="size-1.5 bg-primary rounded-full animate-pulse" /> LIVE
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                {/* Revenue chart */}
-                <div className="glass-card rounded-lg p-3">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-[10px] font-mono text-muted uppercase">Revenue Pipeline</span>
-                    <span className="text-[10px] font-mono text-primary">+42.8%</span>
-                  </div>
-                  <div className="flex items-end gap-1.5 h-16">
-                    {[40, 65, 45, 78, 55, 88, 72, 95, 82, 100, 78, 92].map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 rounded-sm bg-gradient-to-t from-primary/60 to-primary/20"
-                        style={{ height: `${h}%` }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* CRM Pipeline */}
-                <div className="glass-card rounded-lg p-3">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-[10px] font-mono text-muted uppercase">CRM Pipeline</span>
-                    <span className="text-[10px] font-mono text-muted">42 leads</span>
-                  </div>
-                  <div className="grid grid-cols-4 gap-1">
-                    {["New", "Qual", "Prop", "Won"].map((s, i) => (
-                      <div key={s} className="text-center">
-                        <div className={`h-1 rounded-full mb-1 ${i === 2 ? "bg-primary" : "bg-white/10"}`} />
-                        <div className="text-[8px] font-mono text-muted uppercase">{s}</div>
-                        <div className="text-[10px] font-bold">{[18, 12, 8, 4][i]}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Chatbot */}
-                <div className="glass-card rounded-lg p-3 font-mono text-[9px] space-y-1.5">
-                  <div className="flex items-center gap-1 text-primary">
-                    <span className="size-1 bg-primary rounded-full animate-pulse" />
-                    AGENT: Qualifying lead...
-                  </div>
-                  <div className="text-muted pl-3">USER: I need CRM automation.</div>
-                  <div className="text-foreground pl-3">AGENT: Booking meeting @ 2PM tomorrow ✓</div>
-                </div>
-
-                {/* Nodes */}
-                <div className="flex items-center gap-2">
-                  <NodeBox label="FORM" active />
-                  <Connector />
-                  <NodeBox label="CRM" />
-                  <Connector />
-                  <NodeBox label="AI" active />
-                  <Connector />
-                  <NodeBox label="CAL" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries */}
-      <section className="py-20 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-10">
-            <span className="font-mono text-xs text-primary uppercase">[ 02. Verticals ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">
-              Industries I've Designed Automation For
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-            {industries.map((ind) => (
-              <div
-                key={ind}
-                className="glass-card px-4 py-5 rounded-lg text-sm font-medium hover:border-primary/40 hover:-translate-y-0.5 transition-all"
-              >
-                <div className="size-6 bg-primary/10 border border-primary/20 rounded mb-3 grid place-items-center">
-                  <div className="size-1.5 bg-primary rounded-full" />
-                </div>
-                {ind}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
-          <div>
-            <span className="font-mono text-xs text-primary uppercase">[ 03. Operator ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 mb-6 tracking-tight">
-              Automation First. <br />
-              <span className="italic text-primary">Business Focused.</span>
-            </h2>
-            <p className="text-muted leading-relaxed mb-4">
-              I'm <span className="text-foreground font-semibold">Jake Vincent Talaba</span>, an AI Automation Specialist passionate about helping businesses streamline operations through intelligent automation, CRM optimization, and AI-powered workflows.
-            </p>
-            <p className="text-muted leading-relaxed mb-8">
-              With 3+ years in customer service and admin support, I combine real-world business operations knowledge with modern automation technologies to build systems that reduce manual work and help businesses scale.
-            </p>
-            <div className="glass-card p-6 rounded-lg border-l-4 border-l-primary">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-primary mb-2">Mission</div>
-              <p className="text-foreground font-medium italic">
-                Help businesses automate repetitive processes so teams can focus on growth instead of manual tasks.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="font-mono text-xs uppercase text-muted mb-4">// core.skills</div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                "AI Automation", "Workflow Automation", "GoHighLevel", "CRM Administration",
-                "Lead Management", "Pipeline Optimization", "Customer Support", "Zapier",
-                "API Integrations", "Prompt Engineering", "Process Optimization", "SOP Creation",
-              ].map((skill) => (
-                <div
-                  key={skill}
-                  className="glass-card px-3 py-3 rounded font-mono text-xs flex items-center gap-2"
-                >
-                  <span className="text-primary">+</span> {skill}
+                { v: 3, s: "+", l: "Yrs Customer Support" },
+                { v: 15, s: "+", l: "Portfolio Projects" },
+                { v: 30, s: "+", l: "Workflows Built" },
+                { v: 98, s: "%", l: "CSAT & QA Score" },
+              ].map((s) => (
+                <div key={s.l} className="rounded-2xl border border-border bg-card/40 backdrop-blur p-4">
+                  <div className="text-3xl font-black gradient-text">
+                    <Counter end={s.v} suffix={s.s} />
+                  </div>
+                  <div className="mt-1 text-[11px] font-mono uppercase tracking-widest text-muted">
+                    {s.l}
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:col-span-6">
+            <HeroDashboard />
+          </div>
+        </div>
+
+        {/* Industries marquee */}
+        <div className="relative border-y border-border bg-background/50 backdrop-blur">
+          <div className="max-w-7xl mx-auto px-6 py-6 flex items-center gap-6 overflow-hidden">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-muted shrink-0">
+              Industries served
+            </div>
+            <div className="flex gap-8 whitespace-nowrap animate-marquee">
+              {[...industries, ...industries].map((i, k) => (
+                <span key={k} className="text-sm text-muted-foreground">
+                  {i} <span className="text-primary">·</span>
+                </span>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
-            <span className="font-mono text-xs text-primary uppercase">[ 04. Capabilities ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">System Solutions</h2>
-            <p className="text-muted mt-4 max-w-xl">
-              End-to-end automation engineering — from discovery to deployment.
+      {/* ABOUT */}
+      <Section id="about" eyebrow="About" title={<>Automation first. <span className="gradient-text">Business focused.</span></>}>
+        <div className="grid lg:grid-cols-5 gap-10">
+          <div className="lg:col-span-3 space-y-5 text-muted-foreground text-lg leading-relaxed">
+            <p>
+              I&apos;m Jake — I design intelligent business automation systems
+              that eliminate repetitive work, optimize customer journeys, and
+              turn operational bottlenecks into scalable, measurable growth.
+            </p>
+            <p>
+              My path started in customer service — 3+ years handling phone,
+              chat, and email support with 95–100% CSAT & QA scores. That
+              front-line experience is what makes my automation different: I
+              know exactly where customers get stuck, where teams waste
+              cycles, and where the ROI actually lives.
+            </p>
+            <p>
+              Today I combine that operator empathy with GoHighLevel, Zapier,
+              AI, and CRM engineering to help small businesses, agencies,
+              clinics, and service brands operate like enterprise teams —
+              without enterprise overhead.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <div
-                key={s.title}
-                className={`glass-card p-8 rounded-lg group transition-all duration-500 hover:-translate-y-1 ${
-                  s.featured ? "border-primary/40 bg-primary/5" : "hover:border-primary/40"
-                }`}
-              >
-                <div
-                  className={`size-10 rounded flex items-center justify-center mb-6 font-mono text-[10px] font-bold ${
-                    s.featured ? "bg-primary text-primary-foreground" : "bg-primary/10 border border-primary/20 text-primary"
-                  }`}
-                >
-                  {s.tag}
-                </div>
-                <h3 className="text-xl font-bold mb-4 italic">{s.title}</h3>
-                <ul className="space-y-2 text-sm text-muted font-mono">
-                  {s.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="text-primary shrink-0">+</span> {item}
-                    </li>
-                  ))}
-                </ul>
+          <div className="lg:col-span-2 grid grid-cols-2 gap-3">
+            {[
+              "AI Automation", "Workflow Engineering", "CRM Optimization",
+              "Customer Support", "GoHighLevel", "Lead Management",
+              "Sales Funnels", "AI Chatbots", "Email Automation",
+              "SMS Automation", "Appointments", "Process Design",
+            ].map((s) => (
+              <div key={s} className="rounded-xl border border-border bg-card/40 p-3 text-sm text-foreground text-center">
+                {s}
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Process */}
-      <section className="py-24 bg-surface border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
-            <span className="font-mono text-xs text-primary uppercase">[ 05. Method ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">My Process</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {processSteps.map((step) => (
+      {/* SERVICES */}
+      <Section eyebrow="Services" title={<>Six modules. <span className="gradient-text">One operating system.</span></>}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {services.map((s) => (
+            <div
+              key={s.title}
+              className="group relative rounded-2xl border border-border bg-card/50 backdrop-blur p-6 overflow-hidden hover:border-primary/50 transition-colors"
+            >
               <div
-                key={step.n}
-                className="glass-card p-6 rounded-lg hover:border-primary/40 hover:-translate-y-0.5 transition-all"
-              >
-                <div className="flex items-baseline justify-between mb-3">
-                  <span className="font-mono text-primary text-xs">{step.n}</span>
-                  <div className="h-px flex-1 bg-border mx-3" />
-                  <span className="size-1.5 rounded-full bg-primary/40" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                <p className="text-sm text-muted">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <span className="font-mono text-xs text-primary uppercase">[ 06. Deployments ]</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight italic">Featured Projects</h2>
-            </div>
-            <Link to="/portfolio" className="hidden md:inline font-mono text-xs text-muted hover:text-primary uppercase tracking-widest">
-              [ view_all ] →
-            </Link>
-          </div>
-          <div className="space-y-6">
-            {projects.map((p, i) => (
-              <div
-                key={p.title}
-                className="glass-card p-8 rounded-lg grid md:grid-cols-[auto_1fr_auto] gap-8 hover:border-primary/30 transition-colors"
-              >
-                <div className="font-mono text-primary text-2xl font-bold shrink-0 w-16">
-                  0{i + 1}
-                </div>
-                <div>
-                  <span className="font-mono text-[10px] uppercase text-primary tracking-widest">{p.tag}</span>
-                  <h3 className="text-2xl font-bold mt-2 mb-4">{p.title}</h3>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    <div>
-                      <div className="font-mono text-[10px] uppercase text-muted mb-2">Challenge</div>
-                      <p className="text-sm text-muted">{p.challenge}</p>
-                    </div>
-                    <div>
-                      <div className="font-mono text-[10px] uppercase text-muted mb-2">Solution</div>
-                      <p className="text-sm text-muted">{p.solution}</p>
-                    </div>
-                    <div>
-                      <div className="font-mono text-[10px] uppercase text-muted mb-2">Outcome</div>
-                      <p className="text-sm text-muted">{p.outcome}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex md:flex-col flex-wrap gap-2 md:min-w-[100px]">
-                  {p.stack.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-1 text-[9px] font-mono bg-white/5 border border-white/10 rounded uppercase text-center"
-                    >
+                className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${s.gradient} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`}
+              />
+              <div className="relative">
+                <div className="text-[10px] font-mono uppercase tracking-widest text-muted">{s.tag}</div>
+                <div className="mt-2 text-xl font-bold text-foreground">{s.title}</div>
+                <div className="mt-3 text-sm text-muted-foreground">{s.desc}</div>
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {s.tags.map((t) => (
+                    <span key={t} className="rounded-full border border-border bg-background/50 px-2.5 py-1 text-[10px] font-mono text-muted-foreground">
                       {t}
                     </span>
                   ))}
                 </div>
+                <Link
+                  to="/services"
+                  className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all"
+                >
+                  Explore module →
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* PROCESS */}
+      <Section eyebrow="Process" title={<>From discovery to <span className="gradient-text">continuous optimization</span>.</>}>
+        <div className="relative">
+          <div className="pointer-events-none absolute top-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden lg:block" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 gap-3">
+            {process.map((p) => (
+              <div key={p.n} className="rounded-xl border border-border bg-card/40 p-3">
+                <div className="relative">
+                  <div className="size-12 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-black text-sm shadow-lg shadow-secondary/30">
+                    {p.n}
+                  </div>
+                </div>
+                <div className="mt-3 text-center text-xs font-semibold text-foreground">{p.t}</div>
+                <div className="mt-1 text-center text-[11px] text-muted-foreground leading-snug">{p.d}</div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Interactive Workflow */}
-      <section className="py-24 bg-surface border-b border-border overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="font-mono text-xs text-primary uppercase">[ 07. Architecture ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">Interactive Workflow Showcase</h2>
-            <p className="text-muted mt-3 font-mono text-sm">Click a workflow to visualize the automation graph</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {workflows.map((w, i) => (
-              <button
-                key={w.name}
-                onClick={() => setActiveWorkflow(i)}
-                className={`px-4 py-2 rounded-sm font-mono text-[11px] uppercase tracking-wider transition-all ${
-                  activeWorkflow === i
-                    ? "bg-primary text-primary-foreground"
-                    : "glass-card text-muted hover:text-foreground"
-                }`}
-              >
-                {w.name}
-              </button>
-            ))}
-          </div>
-          <div className="glass-card rounded-2xl p-8 md:p-12">
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {workflows[activeWorkflow].steps.map((step, i, arr) => (
-                <div key={step} className="flex items-center gap-3">
-                  <div
-                    className={`px-4 py-3 rounded font-mono text-xs text-center min-w-[110px] transition-all ${
-                      i === Math.floor(arr.length / 2)
-                        ? "bg-primary text-primary-foreground"
-                        : "glass-card border-primary/20"
-                    }`}
-                  >
-                    <div className="font-bold">{step.toUpperCase()}</div>
-                    <div className={`text-[9px] mt-1 ${i === Math.floor(arr.length / 2) ? "text-primary-foreground/70" : "text-muted"}`}>
-                      step_{String(i + 1).padStart(2, "0")}
-                    </div>
-                  </div>
-                  {i < arr.length - 1 && (
-                    <svg className="w-6 h-4 shrink-0" viewBox="0 0 24 16">
-                      <line
-                        x1="0"
-                        y1="8"
-                        x2="24"
-                        y2="8"
-                        stroke="#10b981"
-                        strokeWidth="1.5"
-                        strokeDasharray="4 4"
-                        className="animate-[flow-dash_2s_linear_infinite]"
-                      />
-                    </svg>
-                  )}
+      {/* FEATURED PROJECTS */}
+      <Section eyebrow="Portfolio" title={<>Featured <span className="gradient-text">systems shipped</span>.</>}>
+        <div className="grid md:grid-cols-3 gap-4">
+          {projects.map((p) => (
+            <Link
+              key={p.slug}
+              to="/portfolio/$slug"
+              params={{ slug: p.slug }}
+              className="group relative rounded-2xl border border-border bg-card/50 overflow-hidden hover:border-primary/50 transition-colors"
+            >
+              <div className={`h-40 relative bg-gradient-to-br ${p.color}`}>
+                <div className="absolute inset-0 grid-bg opacity-30" />
+                <div className="absolute bottom-3 left-3 text-[10px] font-mono uppercase tracking-widest text-white/80 bg-black/30 backdrop-blur px-2 py-1 rounded">
+                  {p.industry}
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
-            <span className="font-mono text-xs text-primary uppercase">[ 08. Stack ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">Technology Stack</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {Object.entries(techStack).map(([cat, tools]) => (
-              <div key={cat} className="glass-card p-6 rounded-lg">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-primary mb-4">
-                  {cat}
-                </div>
-                <div className="space-y-2">
-                  {tools.map((t) => (
-                    <div
-                      key={t}
-                      className="text-sm font-medium hover:text-primary transition-colors cursor-default"
-                    >
-                      {t}
-                    </div>
+              </div>
+              <div className="p-5">
+                <div className="text-lg font-bold text-foreground">{p.title}</div>
+                <div className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.desc}</div>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {p.stack.map((s) => (
+                    <span key={s} className="rounded-full border border-border bg-background/50 px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
+                      {s}
+                    </span>
                   ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials placeholder + Certs */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
-          <div className="glass-card p-10 rounded-lg">
-            <span className="font-mono text-xs text-primary uppercase">[ 09. Signals ]</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold mt-3 mb-6 tracking-tight">Client Stories — Coming Soon</h2>
-            <p className="text-muted leading-relaxed mb-6">
-              I'm currently building automation systems and collaborating with businesses. Client success stories will be added here as projects complete.
-            </p>
-            <div className="flex flex-wrap gap-3 font-mono text-[11px]">
-              <span className="px-3 py-1.5 border border-border rounded-full text-muted">Mentor reviews</span>
-              <span className="px-3 py-1.5 border border-border rounded-full text-muted">Peer feedback</span>
-              <span className="px-3 py-1.5 border border-border rounded-full text-muted">LinkedIn recs</span>
-            </div>
-          </div>
-          <div className="glass-card p-10 rounded-lg">
-            <span className="font-mono text-xs text-primary uppercase">[ 10. Learning ]</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold mt-3 mb-6 tracking-tight">Certifications & Training</h2>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                "GoHighLevel", "AI Automation", "Workflow Engineering",
-                "CRM Optimization", "Customer Success", "Zapier",
-              ].map((c) => (
-                <div key={c} className="flex items-center gap-2 text-sm">
-                  <span className="size-1.5 bg-primary rounded-full animate-pulse" />
-                  {c}
+                <div className="mt-4 text-xs font-semibold text-primary group-hover:gap-2 flex items-center gap-1 transition-all">
+                  View case study →
                 </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link to="/portfolio" className="text-sm text-muted-foreground hover:text-foreground">
+            View all projects →
+          </Link>
+        </div>
+      </Section>
+
+      {/* WORKFLOW SHOWCASE */}
+      <Section eyebrow="Workflow Library" title={<>Interactive <span className="gradient-text">workflow blueprints</span>.</>}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+          {["Lead Capture", "Missed Call Text Back", "Appointment Booking", "Lead Qualification", "Pipeline Automation", "Email Follow-Up", "Review Requests", "AI Chat Assistant"].map((w) => (
+            <Link
+              key={w}
+              to="/workflows"
+              className="group rounded-xl border border-border bg-card/50 p-4 hover:border-accent/50 transition-colors"
+            >
+              <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-muted">
+                <span className="size-1.5 rounded-full bg-accent" /> Workflow
+              </div>
+              <div className="mt-2 text-sm font-semibold text-foreground">{w}</div>
+              <div className="mt-3 h-8 flex items-center gap-1">
+                {[0,1,2,3,4].map((i) => (
+                  <div key={i} className="flex-1 h-2 rounded-full bg-gradient-to-r from-primary/40 via-secondary/40 to-accent/40 group-hover:from-primary group-hover:via-secondary group-hover:to-accent transition-all" style={{ opacity: 0.4 + i * 0.15 }} />
+                ))}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* TECH STACK */}
+      <Section eyebrow="Tech Stack" title={<>Tools I ship with, <span className="gradient-text">daily</span>.</>}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          {techGroups.map((g) => (
+            <div key={g.g} className="rounded-2xl border border-border bg-card/40 p-5">
+              <div className="text-[10px] font-mono uppercase tracking-widest text-primary">{g.g}</div>
+              <div className="mt-3 space-y-2">
+                {g.items.map((i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-foreground">
+                    <span className="size-1.5 rounded-full bg-gradient-to-br from-primary to-accent" />
+                    {i}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* TESTIMONIALS PLACEHOLDER */}
+      <Section eyebrow="Testimonials" title={<>What clients <span className="gradient-text">will say</span>.</>}>
+        <div className="grid md:grid-cols-3 gap-4">
+          {[1,2,3].map((i) => (
+            <div key={i} className="rounded-2xl border border-dashed border-border bg-card/30 p-6">
+              <div className="text-xs font-mono uppercase tracking-widest text-muted">Placeholder</div>
+              <div className="mt-3 text-muted-foreground italic">
+                &ldquo;Client testimonial coming soon. Reserved for launch partners currently in build.&rdquo;
+              </div>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="size-9 rounded-full bg-gradient-to-br from-primary to-secondary" />
+                <div>
+                  <div className="text-sm font-semibold text-foreground">Future Partner</div>
+                  <div className="text-[11px] text-muted">Founder · Industry</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* CERTIFICATIONS */}
+      <Section eyebrow="Certifications" title={<>Actively learning. <span className="gradient-text">Always shipping.</span></>}>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="rounded-2xl border border-border bg-card/50 p-6">
+            <div className="text-xs font-mono uppercase tracking-widest text-accent">Current Focus</div>
+            <ul className="mt-4 space-y-2 text-sm text-foreground">
+              {["GoHighLevel Mastery", "AI Automation Systems", "Workflow Engineering", "CRM Optimization", "Zapier Advanced"].map((c) => (
+                <li key={c} className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-accent" /> {c}
+                </li>
               ))}
-            </div>
-            <div className="mt-6 pt-6 border-t border-border font-mono text-[10px] text-muted uppercase">
-              // Currently in progress
-            </div>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-border bg-card/50 p-6">
+            <div className="text-xs font-mono uppercase tracking-widest text-secondary">On the Roadmap</div>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              {["Official GoHighLevel Certification", "HubSpot CRM Certification", "Salesforce Trailhead", "Make Certification", "OpenAI Courses", "Google AI Certifications"].map((c) => (
+                <li key={c} className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-secondary" /> {c}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* FAQ */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="mb-12 text-center">
-            <span className="font-mono text-xs text-primary uppercase">[ 11. FAQ ]</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">Frequently Asked</h2>
-          </div>
-          <div className="space-y-2">
-            {faqs.map((f, i) => (
-              <button
-                key={f.q}
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full text-left glass-card rounded-lg p-6 hover:border-primary/40 transition-colors"
+      <Section eyebrow="FAQ" title={<>Common <span className="gradient-text">questions</span>.</>}>
+        <div className="grid md:grid-cols-2 gap-3">
+          {faqs.map((f) => (
+            <details
+              key={f.q}
+              className="group rounded-xl border border-border bg-card/40 p-5 open:border-primary/50 transition-colors"
+            >
+              <summary className="flex items-center justify-between cursor-pointer list-none">
+                <span className="font-semibold text-foreground">{f.q}</span>
+                <span className="text-primary group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <div className="mt-3 text-sm text-muted-foreground">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </Section>
+
+      {/* FINAL CTA */}
+      <section className="relative">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+          <div className="relative rounded-3xl overflow-hidden border border-border bg-card/60 backdrop-blur-xl p-12 md:p-16 text-center">
+            <div className="absolute inset-0 -z-10 opacity-70">
+              <div className="absolute top-0 left-1/4 h-60 w-60 rounded-full bg-primary/30 blur-3xl" />
+              <div className="absolute top-0 right-1/4 h-60 w-60 rounded-full bg-secondary/30 blur-3xl" />
+              <div className="absolute bottom-0 left-1/2 h-60 w-60 rounded-full bg-accent/30 blur-3xl" />
+            </div>
+            <div className="text-xs font-mono uppercase tracking-widest text-muted mb-4">
+              // Ready when you are
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-foreground">
+              Ready to <span className="gradient-text">automate</span> your business?
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+              Let&apos;s build smarter systems together. Start with a free 30-minute
+              discovery call — walk away with a workflow map, tool stack, and next-step plan.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-2 px-7 py-4 rounded-full text-sm font-semibold text-white overflow-hidden"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="font-semibold">{f.q}</span>
-                  <span className={`text-primary font-mono text-lg transition-transform ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                </div>
-                {openFaq === i && (
-                  <p className="text-muted text-sm mt-4 leading-relaxed animate-[count-up_0.3s_ease-out]">
-                    {f.a}
-                  </p>
-                )}
-              </button>
-            ))}
+                <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent" />
+                <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent blur-xl opacity-70" />
+                <span className="relative">Book Discovery Call</span>
+                <span className="relative">→</span>
+              </Link>
+              <Link
+                to="/portfolio"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/40 px-7 py-4 text-sm font-semibold text-foreground hover:border-primary/50 transition-colors"
+              >
+                Explore Portfolio
+              </Link>
+            </div>
           </div>
         </div>
       </section>
+    </div>
+  );
+}
 
-      {/* Final CTA */}
-      <section className="py-24 bg-primary">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="font-mono text-xs uppercase tracking-widest text-primary-foreground/70 mb-6">
-            [ 12. Deploy ]
+function Section({
+  id,
+  eyebrow,
+  title,
+  children,
+}: {
+  id?: string;
+  eyebrow: string;
+  title: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary">
+            <span className="size-1.5 rounded-full bg-primary" /> {eyebrow}
           </div>
-          <h2 className="text-4xl sm:text-6xl font-black text-primary-foreground tracking-tighter mb-6 leading-[0.95]">
-            READY TO AUTOMATE <br />YOUR BUSINESS?
+          <h2 className="mt-3 text-3xl md:text-5xl font-black tracking-tight text-foreground leading-tight max-w-3xl">
+            {title}
           </h2>
-          <p className="text-primary-foreground/80 text-lg mb-12 font-medium max-w-[52ch] mx-auto">
-            Transform repetitive tasks into automated systems that save time, improve customer experiences, and help your business scale.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/contact" className="px-8 py-4 bg-background text-primary font-bold rounded-sm shadow-xl hover:-translate-y-1 transition-transform">
-              Book a Discovery Call
-            </Link>
-            <Link to="/contact" className="px-8 py-4 border-2 border-background/30 text-primary-foreground font-bold rounded-sm hover:bg-background/10 transition-colors">
-              Schedule a Demo
-            </Link>
-          </div>
         </div>
-      </section>
-    </div>
-  );
-}
-
-function Stat({ value, label, accent }: { value: React.ReactNode; label: string; accent?: boolean }) {
-  return (
-    <div>
-      <div className={`text-2xl md:text-3xl font-mono font-bold ${accent ? "text-primary" : ""}`}>
-        {value}
       </div>
-      <div className="text-[10px] text-muted uppercase font-mono tracking-tighter mt-1">
-        {label}
-      </div>
-    </div>
+      {children}
+    </section>
   );
-}
-
-function NodeBox({ label, active }: { label: string; active?: boolean }) {
-  return (
-    <div
-      className={`size-10 rounded flex items-center justify-center font-mono text-[10px] font-bold ${
-        active
-          ? "border border-primary/40 bg-primary/10 text-primary animate-[node-pulse_3s_ease-in-out_infinite]"
-          : "border border-white/10 bg-white/5 text-muted"
-      }`}
-    >
-      {label}
-    </div>
-  );
-}
-
-function Connector() {
-  return <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-white/10" />;
 }

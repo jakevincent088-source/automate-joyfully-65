@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { PageHero, Section, GlassCard } from "../components/ui-primitives";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Book a Discovery Call" },
-      { name: "description", content: "Book a discovery call to scope your AI automation, CRM, or workflow project." },
-      { property: "og:title", content: "Contact — Jake Vincent Talaba" },
-      { property: "og:description", content: "Let's automate your business." },
+      { name: "description", content: "Book a free 30-minute discovery call to explore AI automation, CRM, and workflow builds for your business." },
+      { property: "og:title", content: "Contact Jake Talaba" },
+      { property: "og:description", content: "Let's build smarter systems together." },
     ],
   }),
   component: Contact,
@@ -17,59 +18,74 @@ function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <div>
-      <section className="pt-20 pb-16 grid-bg border-b border-border">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="font-mono text-xs text-primary uppercase">[ init.contact ]</span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tighter mt-4 mb-6">
-            Let's Talk <span className="text-primary italic">Automation</span>
-          </h1>
-          <p className="text-lg text-muted max-w-2xl mx-auto">
-            Tell me about your bottleneck. I'll respond within 24 hours with a rough scope and next steps.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-2xl mx-auto px-6">
-          {sent ? (
-            <div className="glass-card p-12 rounded-lg text-center">
-              <div className="font-mono text-xs text-primary uppercase mb-4">[ transmission_received ]</div>
-              <h2 className="text-2xl font-bold mb-4">Thanks — message received.</h2>
-              <p className="text-muted">I'll be back to you within 24 hours.</p>
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="glass-card p-8 rounded-lg space-y-5"
-            >
-              <Field label="Name" name="name" />
-              <Field label="Email" name="email" type="email" />
-              <Field label="Company" name="company" />
-              <div>
-                <label className="font-mono text-[10px] uppercase tracking-widest text-primary mb-2 block">
-                  Project Scope
-                </label>
-                <textarea
-                  required
-                  rows={5}
-                  className="w-full bg-white/5 border border-border rounded px-3 py-2 text-sm focus:border-primary focus:outline-none"
-                  placeholder="What are you trying to automate?"
-                />
+      <PageHero
+        eyebrow="Contact"
+        title={<>Ready to <span className="gradient-text">automate</span> your business?</>}
+        sub="Let's build smarter systems together. Start with a free 30-minute discovery call."
+      />
+      <Section>
+        <div className="grid lg:grid-cols-5 gap-6">
+          <GlassCard className="lg:col-span-3">
+            {sent ? (
+              <div className="py-12 text-center">
+                <div className="text-4xl">✓</div>
+                <div className="mt-3 text-xl font-bold text-foreground">Message received</div>
+                <div className="mt-2 text-sm text-muted-foreground">I&apos;ll reply within one business day.</div>
               </div>
-              <button className="w-full py-3 bg-primary text-primary-foreground font-bold rounded-sm hover:bg-primary/90 transition-colors">
-                Send Transmission →
-              </button>
-            </form>
-          )}
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSent(true);
+                }}
+                className="space-y-4"
+              >
+                <Field label="Full name" name="name" />
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Field label="Email" name="email" type="email" />
+                  <Field label="Company" name="company" />
+                </div>
+                <div>
+                  <label className="text-xs font-mono uppercase tracking-widest text-muted">Industry</label>
+                  <select className="mt-1 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-foreground">
+                    {["Dental", "Medical", "Marketing Agency", "Real Estate", "Roofing", "Coaching", "SaaS", "Ecommerce", "Home Services", "Other"].map((o) => <option key={o}>{o}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs font-mono uppercase tracking-widest text-muted">What do you want to automate?</label>
+                  <textarea rows={4} className="mt-1 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-foreground" placeholder="Tell me about the problem you're trying to solve..." />
+                </div>
+                <button className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white font-semibold py-3.5">
+                  Send message →
+                </button>
+              </form>
+            )}
+          </GlassCard>
 
-          <div className="mt-8 text-center font-mono text-xs text-muted">
-            or email directly: <a href="mailto:hello@jakevincent.dev" className="text-primary hover:underline">hello@jakevincent.dev</a>
+          <div className="lg:col-span-2 space-y-4">
+            <GlassCard>
+              <div className="text-xs font-mono uppercase tracking-widest text-primary">Book directly</div>
+              <div className="mt-3 aspect-video rounded-xl border border-dashed border-border bg-background/40 grid place-items-center text-muted">
+                Calendly embed placeholder
+              </div>
+            </GlassCard>
+            <GlassCard>
+              <div className="text-xs font-mono uppercase tracking-widest text-accent">Or reach out on</div>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li className="flex justify-between"><span className="text-muted-foreground">Email</span><span className="text-foreground font-mono">hello@jaketalaba.io</span></li>
+                <li className="flex justify-between"><span className="text-muted-foreground">LinkedIn</span><span className="text-foreground font-mono">/jaketalaba</span></li>
+                <li className="flex justify-between"><span className="text-muted-foreground">GitHub</span><span className="text-foreground font-mono">/jaketalaba</span></li>
+                <li className="flex justify-between"><span className="text-muted-foreground">WhatsApp</span><span className="text-foreground font-mono">On request</span></li>
+              </ul>
+            </GlassCard>
+            <div className="rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 p-6 text-center">
+              <div className="text-sm text-muted-foreground">Response time</div>
+              <div className="mt-1 text-2xl font-black gradient-text">&lt; 24 hours</div>
+              <div className="mt-1 text-xs text-muted">Weekdays, PH time</div>
+            </div>
           </div>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }
@@ -77,14 +93,12 @@ function Contact() {
 function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
   return (
     <div>
-      <label className="font-mono text-[10px] uppercase tracking-widest text-primary mb-2 block">
-        {label}
-      </label>
+      <label className="text-xs font-mono uppercase tracking-widest text-muted">{label}</label>
       <input
-        required
-        type={type}
         name={name}
-        className="w-full bg-white/5 border border-border rounded px-3 py-2 text-sm focus:border-primary focus:outline-none"
+        type={type}
+        required
+        className="mt-1 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-foreground focus:outline-none focus:border-primary/60"
       />
     </div>
   );
