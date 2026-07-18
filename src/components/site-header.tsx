@@ -15,12 +15,14 @@ export function SiteHeader() {
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="size-6 bg-primary rounded-sm flex items-center justify-center">
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="relative size-7 rounded-lg bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center shadow-lg shadow-secondary/30">
             <div className="size-2 bg-background rounded-full" />
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary via-secondary to-accent blur-md opacity-60 -z-10" />
           </div>
-          <span className="font-mono text-sm tracking-tighter font-bold uppercase group-hover:text-primary transition-colors">
-            JVT_AUTOMATION [v3.0]
+          <span className="font-mono text-sm tracking-tight font-bold uppercase">
+            <span className="gradient-text">JVT</span>
+            <span className="text-foreground">_automation</span>
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-muted">
@@ -36,9 +38,9 @@ export function SiteHeader() {
           ))}
           <Link
             to="/contact"
-            className="px-4 py-2 border border-primary text-primary hover:bg-primary/10 transition-colors"
+            className="px-4 py-2 rounded-md bg-gradient-to-r from-primary via-secondary to-accent text-white font-semibold shadow-lg shadow-secondary/30 hover:shadow-secondary/50 hover:-translate-y-0.5 transition-all"
           >
-            Get Started
+            Book a Call
           </Link>
         </div>
         <button
