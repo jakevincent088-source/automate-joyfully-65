@@ -29,7 +29,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
 });
 
 function ProjectDetail() {
-  const p = Route.useLoaderData();
+  const p = Route.useLoaderData() as (typeof projects)[number];
   return (
     <div>
       <PageHero

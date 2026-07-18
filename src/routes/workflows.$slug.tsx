@@ -29,7 +29,7 @@ export const Route = createFileRoute("/workflows/$slug")({
 });
 
 function WorkflowDetail() {
-  const w = Route.useLoaderData();
+  const w = Route.useLoaderData() as (typeof workflows)[number];
   return (
     <div>
       <PageHero eyebrow={w.category} title={w.title} sub={w.overview} />
