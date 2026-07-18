@@ -102,19 +102,19 @@
 @utility aurora-bg {
   position: relative;
   overflow: hidden;
-}
-@utility aurora-bg::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.35), transparent 45%),
-    radial-gradient(circle at 80% 10%, rgba(124, 58, 237, 0.3), transparent 45%),
-    radial-gradient(circle at 60% 80%, rgba(6, 182, 212, 0.25), transparent 45%);
-  filter: blur(60px);
-  animation: gradient-shift 14s ease infinite;
-  z-index: 0;
-  pointer-events: none;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.35), transparent 45%),
+      radial-gradient(circle at 80% 10%, rgba(124, 58, 237, 0.3), transparent 45%),
+      radial-gradient(circle at 60% 80%, rgba(6, 182, 212, 0.25), transparent 45%);
+    filter: blur(60px);
+    animation: gradient-shift 14s ease infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
 }
 
 @layer base {
