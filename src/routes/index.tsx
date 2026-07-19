@@ -227,21 +227,6 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Industries marquee */}
-        <div className="relative border-y border-border bg-background/50 backdrop-blur">
-          <div className="max-w-7xl mx-auto px-6 py-6 flex items-center gap-6 overflow-hidden">
-            <div className="text-[10px] font-mono uppercase tracking-widest text-muted shrink-0">
-              Industries served
-            </div>
-            <div className="flex gap-8 whitespace-nowrap animate-marquee">
-              {[...industries, ...industries].map((i, k) => (
-                <span key={k} className="text-sm text-muted-foreground">
-                  {i} <span className="text-primary">·</span>
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ABOUT */}
