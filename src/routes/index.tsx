@@ -26,10 +26,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const industries = [
-  "Dental Clinics", "Marketing Agencies", "Real Estate", "Roofing", "Medical Practices",
-  "Coaches", "Consultants", "SaaS", "Home Services", "Ecommerce", "Local Services",
-];
 
 const services = [
   {
