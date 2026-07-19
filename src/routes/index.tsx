@@ -193,7 +193,10 @@ function HomePage() {
                 View Portfolio
               </Link>
               <a
-                href="#"
+                href={resumeAsset.url}
+                download="Jake_AI_Specialist_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
               >
                 Download Resume ↓
