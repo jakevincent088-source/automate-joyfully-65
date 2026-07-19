@@ -111,12 +111,36 @@ const projects = [
   },
 ];
 
-const techGroups = [
-  { g: "AI", items: ["ChatGPT", "Claude", "Gemini", "GHL AI", "OpenAI"] },
-  { g: "Automation", items: ["Zapier", "Make", "n8n", "Pabbly"] },
-  { g: "CRM", items: ["GoHighLevel", "Salesforce", "Zendesk", "HubSpot"] },
-  { g: "Productivity", items: ["Google WS", "Sheets", "Notion", "ClickUp", "Airtable"] },
-  { g: "Comms", items: ["Slack", "Twilio", "WhatsApp", "Discord", "Gmail"] },
+const techItems: { name: string; slug: string | null }[] = [
+  { name: "ChatGPT", slug: "openai" },
+  { name: "Claude", slug: "anthropic" },
+  { name: "Gemini", slug: "googlegemini" },
+  { name: "GoHighLevel", slug: null },
+  { name: "Zapier", slug: "zapier" },
+  { name: "Make", slug: "make" },
+  { name: "n8n", slug: "n8n" },
+  { name: "Salesforce", slug: "salesforce" },
+  { name: "HubSpot", slug: "hubspot" },
+  { name: "Zendesk", slug: "zendesk" },
+  { name: "Notion", slug: "notion" },
+  { name: "Airtable", slug: "airtable" },
+  { name: "Slack", slug: "slack" },
+  { name: "Twilio", slug: "twilio" },
+  { name: "Stripe", slug: "stripe" },
+  { name: "Calendly", slug: "calendly" },
+  { name: "Google", slug: "google" },
+  { name: "Gmail", slug: "gmail" },
+  { name: "WhatsApp", slug: "whatsapp" },
+  { name: "Discord", slug: "discord" },
+  { name: "ClickUp", slug: "clickup" },
+  { name: "Pabbly", slug: null },
+];
+
+const highlights = [
+  "AI Automation", "Workflow Engineering", "CRM Optimization",
+  "Customer Support", "GoHighLevel", "Lead Management",
+  "Sales Funnels", "AI Chatbots", "Email Automation",
+  "SMS Automation", "Appointments", "Process Design",
 ];
 
 const faqs = [
@@ -227,7 +251,7 @@ function HomePage() {
 
       {/* ABOUT */}
       <Section id="about" eyebrow="About" title={<>Automation first. <span className="gradient-text">Business focused.</span></>}>
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid lg:grid-cols-5 gap-10 items-start">
           <div className="lg:col-span-3 space-y-5 text-muted-foreground text-lg leading-relaxed">
             <p>
               I&apos;m Jake — I design intelligent business automation systems
@@ -247,8 +271,16 @@ function HomePage() {
               clinics, and service brands operate like enterprise teams —
               without enterprise overhead.
             </p>
+            <div className="pt-2">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3 text-sm font-semibold text-foreground hover:border-primary/50 transition-colors"
+              >
+                View Experience →
+              </Link>
+            </div>
           </div>
-          <div className="lg:col-span-2 space-y-5">
+          <div className="lg:col-span-2">
             <div className="relative rounded-2xl overflow-hidden border border-border bg-card/40">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/30 blur-2xl opacity-60 -z-10" />
               <img
@@ -257,19 +289,18 @@ function HomePage() {
                 className="w-full h-auto object-cover"
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                "AI Automation", "Workflow Engineering", "CRM Optimization",
-                "Customer Support", "GoHighLevel", "Lead Management",
-                "Sales Funnels", "AI Chatbots", "Email Automation",
-                "SMS Automation", "Appointments", "Process Design",
-              ].map((s) => (
-                <div key={s} className="rounded-xl border border-border bg-card/40 p-3 text-sm text-foreground text-center">
-                  {s}
-                </div>
-              ))}
-            </div>
           </div>
+        </div>
+        {/* Highlights — horizontal row below description */}
+        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
+          {highlights.map((s) => (
+            <span
+              key={s}
+              className="rounded-full border border-border bg-card/50 backdrop-blur px-4 py-2 text-sm text-foreground hover:border-primary/50 transition-colors"
+            >
+              {s}
+            </span>
+          ))}
         </div>
       </Section>
 
@@ -304,26 +335,6 @@ function HomePage() {
               </div>
             </div>
           ))}
-        </div>
-      </Section>
-
-      {/* PROCESS */}
-      <Section eyebrow="Process" title={<>From discovery to <span className="gradient-text">continuous optimization</span>.</>}>
-        <div className="relative">
-          <div className="pointer-events-none absolute top-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden lg:block" />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 gap-3">
-            {process.map((p) => (
-              <div key={p.n} className="rounded-xl border border-border bg-card/40 p-3">
-                <div className="relative">
-                  <div className="size-12 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-black text-sm shadow-lg shadow-secondary/30">
-                    {p.n}
-                  </div>
-                </div>
-                <div className="mt-3 text-center text-xs font-semibold text-foreground">{p.t}</div>
-                <div className="mt-1 text-center text-[11px] text-muted-foreground leading-snug">{p.d}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </Section>
 
@@ -392,15 +403,34 @@ function HomePage() {
 
       {/* TECH STACK */}
       <Section eyebrow="Tech Stack" title={<>Tools I ship with, <span className="gradient-text">daily</span>.</>}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-          {techGroups.map((g) => (
-            <div key={g.g} className="rounded-2xl border border-border bg-card/40 p-5">
-              <div className="text-[10px] font-mono uppercase tracking-widest text-primary">{g.g}</div>
-              <div className="mt-3 space-y-2">
-                {g.items.map((i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-foreground">
-                    <span className="size-1.5 rounded-full bg-gradient-to-br from-primary to-accent" />
-                    {i}
+        <div className="space-y-4">
+          {[false, true].map((reverse) => (
+            <div
+              key={String(reverse)}
+              className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]"
+            >
+              <div
+                className="flex gap-4 w-max animate-marquee"
+                style={reverse ? { animationDirection: "reverse" } : undefined}
+              >
+                {[...techItems, ...techItems].map((t, i) => (
+                  <div
+                    key={`${reverse}-${i}`}
+                    className="flex items-center gap-3 rounded-xl border border-border bg-card/60 backdrop-blur px-5 py-3 min-w-max hover:border-primary/50 transition-colors"
+                  >
+                    {t.slug ? (
+                      <img
+                        src={`https://cdn.simpleicons.org/${t.slug}`}
+                        alt=""
+                        className="size-6"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="size-6 rounded-md bg-gradient-to-br from-primary via-secondary to-accent" />
+                    )}
+                    <span className="text-sm font-semibold text-foreground whitespace-nowrap">
+                      {t.name}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -408,6 +438,27 @@ function HomePage() {
           ))}
         </div>
       </Section>
+
+      {/* PROCESS */}
+      <Section eyebrow="Process" title={<>From discovery to <span className="gradient-text">continuous optimization</span>.</>}>
+        <div className="relative">
+          <div className="pointer-events-none absolute top-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden lg:block" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 gap-3">
+            {process.map((p) => (
+              <div key={p.n} className="rounded-xl border border-border bg-card/40 p-3">
+                <div className="relative">
+                  <div className="size-12 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-black text-sm shadow-lg shadow-secondary/30">
+                    {p.n}
+                  </div>
+                </div>
+                <div className="mt-3 text-center text-xs font-semibold text-foreground">{p.t}</div>
+                <div className="mt-1 text-center text-[11px] text-muted-foreground leading-snug">{p.d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
 
       {/* TESTIMONIALS PLACEHOLDER */}
       <Section eyebrow="Testimonials" title={<>What clients <span className="gradient-text">will say</span>.</>}>
