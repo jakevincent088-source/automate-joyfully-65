@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Counter } from "../components/counter";
 import { HeroDashboard } from "../components/hero-dashboard";
+import resumeAsset from "../assets/Jake_AI_Specialist_CV.pdf.asset.json";
+import jakePhoto from "../assets/Jake_Formal_Photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,10 +26,6 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const industries = [
-  "Dental Clinics", "Marketing Agencies", "Real Estate", "Roofing", "Medical Practices",
-  "Coaches", "Consultants", "SaaS", "Home Services", "Ecommerce", "Local Services",
-];
 
 const services = [
   {
@@ -146,7 +144,7 @@ function HomePage() {
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-3 py-1.5 text-xs font-mono text-muted-foreground">
               <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Available for new automation builds · Q3 2026
+              Available Nationwide
             </div>
             <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-foreground leading-[1.02]">
               I Build{" "}
@@ -191,7 +189,10 @@ function HomePage() {
                 View Portfolio
               </Link>
               <a
-                href="#"
+                href={resumeAsset.url}
+                download="Jake_AI_Specialist_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
               >
                 Download Resume ↓
@@ -222,21 +223,6 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Industries marquee */}
-        <div className="relative border-y border-border bg-background/50 backdrop-blur">
-          <div className="max-w-7xl mx-auto px-6 py-6 flex items-center gap-6 overflow-hidden">
-            <div className="text-[10px] font-mono uppercase tracking-widest text-muted shrink-0">
-              Industries served
-            </div>
-            <div className="flex gap-8 whitespace-nowrap animate-marquee">
-              {[...industries, ...industries].map((i, k) => (
-                <span key={k} className="text-sm text-muted-foreground">
-                  {i} <span className="text-primary">·</span>
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ABOUT */}
@@ -262,17 +248,27 @@ function HomePage() {
               without enterprise overhead.
             </p>
           </div>
-          <div className="lg:col-span-2 grid grid-cols-2 gap-3">
-            {[
-              "AI Automation", "Workflow Engineering", "CRM Optimization",
-              "Customer Support", "GoHighLevel", "Lead Management",
-              "Sales Funnels", "AI Chatbots", "Email Automation",
-              "SMS Automation", "Appointments", "Process Design",
-            ].map((s) => (
-              <div key={s} className="rounded-xl border border-border bg-card/40 p-3 text-sm text-foreground text-center">
-                {s}
-              </div>
-            ))}
+          <div className="lg:col-span-2 space-y-5">
+            <div className="relative rounded-2xl overflow-hidden border border-border bg-card/40">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/30 blur-2xl opacity-60 -z-10" />
+              <img
+                src={jakePhoto.url}
+                alt="Jake Vincent Talaba"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                "AI Automation", "Workflow Engineering", "CRM Optimization",
+                "Customer Support", "GoHighLevel", "Lead Management",
+                "Sales Funnels", "AI Chatbots", "Email Automation",
+                "SMS Automation", "Appointments", "Process Design",
+              ].map((s) => (
+                <div key={s} className="rounded-xl border border-border bg-card/40 p-3 text-sm text-foreground text-center">
+                  {s}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Section>
