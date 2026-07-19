@@ -111,12 +111,36 @@ const projects = [
   },
 ];
 
-const techGroups = [
-  { g: "AI", items: ["ChatGPT", "Claude", "Gemini", "GHL AI", "OpenAI"] },
-  { g: "Automation", items: ["Zapier", "Make", "n8n", "Pabbly"] },
-  { g: "CRM", items: ["GoHighLevel", "Salesforce", "Zendesk", "HubSpot"] },
-  { g: "Productivity", items: ["Google WS", "Sheets", "Notion", "ClickUp", "Airtable"] },
-  { g: "Comms", items: ["Slack", "Twilio", "WhatsApp", "Discord", "Gmail"] },
+const techItems: { name: string; slug: string | null }[] = [
+  { name: "ChatGPT", slug: "openai" },
+  { name: "Claude", slug: "anthropic" },
+  { name: "Gemini", slug: "googlegemini" },
+  { name: "GoHighLevel", slug: null },
+  { name: "Zapier", slug: "zapier" },
+  { name: "Make", slug: "make" },
+  { name: "n8n", slug: "n8n" },
+  { name: "Salesforce", slug: "salesforce" },
+  { name: "HubSpot", slug: "hubspot" },
+  { name: "Zendesk", slug: "zendesk" },
+  { name: "Notion", slug: "notion" },
+  { name: "Airtable", slug: "airtable" },
+  { name: "Slack", slug: "slack" },
+  { name: "Twilio", slug: "twilio" },
+  { name: "Stripe", slug: "stripe" },
+  { name: "Calendly", slug: "calendly" },
+  { name: "Google", slug: "google" },
+  { name: "Gmail", slug: "gmail" },
+  { name: "WhatsApp", slug: "whatsapp" },
+  { name: "Discord", slug: "discord" },
+  { name: "ClickUp", slug: "clickup" },
+  { name: "Pabbly", slug: null },
+];
+
+const highlights = [
+  "AI Automation", "Workflow Engineering", "CRM Optimization",
+  "Customer Support", "GoHighLevel", "Lead Management",
+  "Sales Funnels", "AI Chatbots", "Email Automation",
+  "SMS Automation", "Appointments", "Process Design",
 ];
 
 const faqs = [
