@@ -252,17 +252,27 @@ function HomePage() {
               without enterprise overhead.
             </p>
           </div>
-          <div className="lg:col-span-2 grid grid-cols-2 gap-3">
-            {[
-              "AI Automation", "Workflow Engineering", "CRM Optimization",
-              "Customer Support", "GoHighLevel", "Lead Management",
-              "Sales Funnels", "AI Chatbots", "Email Automation",
-              "SMS Automation", "Appointments", "Process Design",
-            ].map((s) => (
-              <div key={s} className="rounded-xl border border-border bg-card/40 p-3 text-sm text-foreground text-center">
-                {s}
-              </div>
-            ))}
+          <div className="lg:col-span-2 space-y-5">
+            <div className="relative rounded-2xl overflow-hidden border border-border bg-card/40">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/30 blur-2xl opacity-60 -z-10" />
+              <img
+                src={jakePhoto.url}
+                alt="Jake Vincent Talaba"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                "AI Automation", "Workflow Engineering", "CRM Optimization",
+                "Customer Support", "GoHighLevel", "Lead Management",
+                "Sales Funnels", "AI Chatbots", "Email Automation",
+                "SMS Automation", "Appointments", "Process Design",
+              ].map((s) => (
+                <div key={s} className="rounded-xl border border-border bg-card/40 p-3 text-sm text-foreground text-center">
+                  {s}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Section>
