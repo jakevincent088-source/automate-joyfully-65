@@ -148,7 +148,7 @@ function HomePage() {
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-3 py-1.5 text-xs font-mono text-muted-foreground">
               <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Available for new automation builds · Q3 2026
+              Available Nationwide
             </div>
             <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-foreground leading-[1.02]">
               I Build{" "}
