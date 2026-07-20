@@ -1,4 +1,12 @@
 import leadCaptureImage from "../assets/Lead_Capture.png.asset.json";
+import missedCallImage from "../assets/Missed_Call_Text_Back.png.asset.json";
+import appointmentBookingImage from "../assets/Appointment_Booking.png.asset.json";
+import leadQualificationImage from "../assets/Lead_Qualification_AI.png.asset.json";
+import crmPipelineImage from "../assets/CRM_Pipeline.png.asset.json";
+import emailFollowUpImage from "../assets/Email_Follow-Up.png.asset.json";
+import reviewRequestImage from "../assets/Review_Request.png.asset.json";
+import internalNotificationsImage from "../assets/Internal_Notifications.png.asset.json";
+import taskCreationImage from "../assets/Task_Creation.png.asset.json";
 
 export type Workflow = {
   slug: string;
