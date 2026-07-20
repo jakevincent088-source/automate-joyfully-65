@@ -1,19 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const nav = [
+  { to: "/", label: "Home", exact: true },
   { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Portfolio" },
-  { to: "/workflows", label: "Workflows" },
-  { to: "/gallery", label: "Gallery" },
   { to: "/about", label: "About" },
-  { to: "/resources", label: "Resources" },
   { to: "/blog", label: "Blog" },
+] as const;
+
+const exploreItems = [
+  { to: "/portfolio", label: "Portfolio", desc: "Case studies & builds" },
+  { to: "/workflows", label: "Workflows", desc: "Automation blueprints" },
+  { to: "/gallery", label: "Gallery", desc: "Funnels & booking pages" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -21,6 +28,25 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setExploreOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
+
+  const openDropdown = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setExploreOpen(true);
+  };
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setExploreOpen(false), 150);
+  };
 
   return (
     <header
@@ -47,11 +73,62 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7 text-sm text-muted-foreground">
-          {nav.map((n) => (
+          {nav.slice(0, 2).map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="hover:text-foreground transition-colors relative"
+              className="hover:text-foreground transition-colors"
+              activeProps={{ className: "text-foreground" }}
+              activeOptions={n.exact ? { exact: true } : undefined}
+            >
+              {n.label}
+            </Link>
+          ))}
+
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={openDropdown}
+            onMouseLeave={scheduleClose}
+          >
+            <button
+              type="button"
+              onClick={() => setExploreOpen((v) => !v)}
+              className="hover:text-foreground transition-colors inline-flex items-center gap-1"
+              aria-expanded={exploreOpen}
+              aria-haspopup="true"
+            >
+              Explore Works
+              <svg width="10" height="10" viewBox="0 0 10 10" className={`transition-transform ${exploreOpen ? "rotate-180" : ""}`}>
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {exploreOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-64">
+                <div className="rounded-xl border border-border bg-card/95 backdrop-blur-xl shadow-2xl shadow-primary/10 p-2">
+                  {exploreItems.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setExploreOpen(false)}
+                      className="block rounded-lg px-3 py-2.5 hover:bg-white/5 transition-colors group"
+                    >
+                      <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {item.label}
+                      </div>
+                      <div className="text-[11px] text-muted-foreground mt-0.5">{item.desc}</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {nav.slice(2).map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              className="hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
             >
               {n.label}
@@ -89,7 +166,43 @@ export function SiteHeader() {
       {open && (
         <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="px-6 py-5 flex flex-col gap-4">
-            {nav.map((n) => (
+            {nav.slice(0, 2).map((n) => (
+              <Link
+                key={n.to}
+                to={n.to}
+                className="text-muted-foreground hover:text-foreground"
+                onClick={() => setOpen(false)}
+              >
+                {n.label}
+              </Link>
+            ))}
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileExploreOpen((v) => !v)}
+                className="w-full flex items-center justify-between text-muted-foreground hover:text-foreground"
+              >
+                <span>Explore Works</span>
+                <svg width="10" height="10" viewBox="0 0 10 10" className={`transition-transform ${mobileExploreOpen ? "rotate-180" : ""}`}>
+                  <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              {mobileExploreOpen && (
+                <div className="mt-3 ml-3 pl-3 border-l border-border flex flex-col gap-3">
+                  {exploreItems.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="text-sm text-muted-foreground hover:text-foreground"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            {nav.slice(2).map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
