@@ -1,3 +1,5 @@
+import leadCaptureImage from "../assets/Lead_Capture.png.asset.json";
+
 export type Workflow = {
   slug: string;
   category: string;
@@ -10,7 +12,9 @@ export type Workflow = {
   outputs: string[];
   benefits: string[];
   tools: string[];
+  blueprintImage?: string;
 };
+
 
 export const workflows: Workflow[] = [
   { slug: "lead-capture", category: "Lead Ops", title: "Lead Capture Automation", overview: "Instant capture, enrichment, and routing of every inbound lead from every source.", problem: "Leads scatter across ads, forms, and emails. Response time destroys conversion.", trigger: "New form submission or webhook", actions: ["Create/update CRM contact", "Enrich with source + UTM", "Assign to owner via round-robin", "Send Slack + SMS alert"], conditions: ["High-intent → immediate SMS", "Cold source → nurture sequence"], outputs: ["CRM record", "Owner notification", "Nurture enrolment"], benefits: ["Sub-5s response time", "Zero missed leads", "Attribution intact"], tools: ["GoHighLevel", "Zapier", "Twilio", "Slack"] },
