@@ -79,7 +79,7 @@ export function SiteHeader() {
               to={n.to}
               className="hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
-              activeOptions={n.exact ? { exact: true } : undefined}
+              activeOptions={"exact" in n && n.exact ? { exact: true } : undefined}
             >
               {n.label}
             </Link>
