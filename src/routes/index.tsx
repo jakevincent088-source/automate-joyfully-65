@@ -208,8 +208,9 @@ function HomePage() {
               </Link>
               <Link
                 to="/portfolio"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 transition-colors"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 hover:shadow-[0_0_30px_-5px_hsl(var(--primary))] hover:-translate-y-0.5 transition-all overflow-hidden"
               >
+                <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 transition-opacity" />
                 View Portfolio
               </Link>
               <a
@@ -217,8 +218,9 @@ function HomePage() {
                 download="Jake_AI_Specialist_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-accent/60 hover:shadow-[0_0_30px_-5px_hsl(var(--accent))] hover:-translate-y-0.5 transition-all overflow-hidden"
               >
+                <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-accent/20 via-secondary/20 to-primary/20 transition-opacity" />
                 Download Resume ↓
               </a>
             </div>
