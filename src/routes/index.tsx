@@ -208,7 +208,7 @@ function HomePage() {
               </Link>
               <Link
                 to="/portfolio"
-                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 hover:shadow-[0_0_30px_-5px_hsl(var(--primary))] hover:-translate-y-0.5 transition-all overflow-hidden"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 transition-all overflow-hidden"
               >
                 <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 transition-opacity" />
                 View Portfolio
@@ -218,7 +218,7 @@ function HomePage() {
                 download="Jake_AI_Specialist_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-accent/60 hover:shadow-[0_0_30px_-5px_hsl(var(--accent))] hover:-translate-y-0.5 transition-all overflow-hidden"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-accent/60 hover:ring-2 hover:ring-accent/40 hover:-translate-y-0.5 transition-all overflow-hidden"
               >
                 <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-accent/20 via-secondary/20 to-primary/20 transition-opacity" />
                 Download Resume ↓
@@ -284,7 +284,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 to="/about"
-                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3 text-sm font-semibold text-foreground hover:border-primary/50 hover:shadow-[0_0_30px_-5px_hsl(var(--primary))] hover:-translate-y-0.5 transition-all overflow-hidden"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3 text-sm font-semibold text-foreground hover:border-primary/50 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 transition-all overflow-hidden"
               >
                 <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 transition-opacity" />
                 View Experience →
@@ -301,7 +301,7 @@ function HomePage() {
                     target={s.slug === "phone" ? undefined : "_blank"}
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="grid place-items-center size-11 rounded-full border border-border bg-card/60 backdrop-blur text-foreground hover:border-primary/50 hover:shadow-[0_0_20px_-5px_hsl(var(--primary))] hover:-translate-y-0.5 transition-all"
+                    className="grid place-items-center size-11 rounded-full border border-border bg-card/60 backdrop-blur text-foreground hover:border-primary/50 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 transition-all"
                   >
                     {s.slug === "whatsapp" && (
                       <svg viewBox="0 0 24 24" className="size-5 fill-current"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.12 1.6 5.92L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.55 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.15-3.38-8.43zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.22-3.8 1 1.02-3.7-.24-.38a9.87 9.87 0 0 1-1.52-5.27c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 6.99c0 5.45-4.44 9.94-9.84 9.94zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.48s1.08 2.88 1.23 3.08c.15.2 2.12 3.24 5.15 4.55.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
