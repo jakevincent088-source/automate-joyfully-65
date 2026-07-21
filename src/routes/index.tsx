@@ -39,7 +39,7 @@ const services = [
     tag: "02 / OPS",
     title: "Workflow Automation",
     desc: "Business process automation, lead routing, approvals, and internal operational workflows.",
-    tags: ["Zapier", "Make", "n8n", "Pabbly"],
+    tags: ["Zapier", "Make", "GHL Automation"],
     gradient: "from-secondary to-accent",
   },
   {
