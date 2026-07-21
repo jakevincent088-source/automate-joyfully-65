@@ -136,12 +136,6 @@ const techItems: { name: string; slug: string | null }[] = [
   { name: "Pabbly", slug: null },
 ];
 
-const highlights = [
-  "AI Automation", "Workflow Engineering", "CRM Optimization",
-  "Customer Support", "GoHighLevel", "Lead Management",
-  "Sales Funnels", "AI Chatbots", "Email Automation",
-  "SMS Automation", "Appointments", "Process Design",
-];
 
 const faqs = [
   { q: "What industries do you work with?", a: "Small businesses, agencies, dental & medical clinics, roofing, real estate, coaches, consultants, SaaS, ecommerce, and local service businesses." },
