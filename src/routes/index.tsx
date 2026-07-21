@@ -39,7 +39,7 @@ const services = [
     tag: "02 / OPS",
     title: "Workflow Automation",
     desc: "Business process automation, lead routing, approvals, and internal operational workflows.",
-    tags: ["Zapier", "Make", "n8n", "Pabbly"],
+    tags: ["Zapier", "Make", "GHL Automation"],
     gradient: "from-secondary to-accent",
   },
   {
@@ -136,12 +136,6 @@ const techItems: { name: string; slug: string | null }[] = [
   { name: "Pabbly", slug: null },
 ];
 
-const highlights = [
-  "AI Automation", "Workflow Engineering", "CRM Optimization",
-  "Customer Support", "GoHighLevel", "Lead Management",
-  "Sales Funnels", "AI Chatbots", "Email Automation",
-  "SMS Automation", "Appointments", "Process Design",
-];
 
 const faqs = [
   { q: "What industries do you work with?", a: "Small businesses, agencies, dental & medical clinics, roofing, real estate, coaches, consultants, SaaS, ecommerce, and local service businesses." },
@@ -208,8 +202,9 @@ function HomePage() {
               </Link>
               <Link
                 to="/portfolio"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 transition-colors"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary/50 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 transition-all overflow-hidden"
               >
+                <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 transition-opacity" />
                 View Portfolio
               </Link>
               <a
@@ -217,8 +212,9 @@ function HomePage() {
                 download="Jake_AI_Specialist_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-accent/60 hover:ring-2 hover:ring-accent/40 hover:-translate-y-0.5 transition-all overflow-hidden"
               >
+                <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-accent/20 via-secondary/20 to-primary/20 transition-opacity" />
                 Download Resume ↓
               </a>
             </div>
@@ -250,34 +246,69 @@ function HomePage() {
       </section>
 
       {/* ABOUT */}
-      <Section id="about" eyebrow="About" title={<>Automation first. <span className="gradient-text">Business focused.</span></>}>
+      <section id="about" className="max-w-7xl mx-auto px-6 py-20 md:py-28">
         <div className="grid lg:grid-cols-5 gap-10 items-start">
-          <div className="lg:col-span-3 space-y-5 text-muted-foreground text-lg leading-relaxed">
-            <p>
-              I&apos;m Jake — I design intelligent business automation systems
-              that eliminate repetitive work, optimize customer journeys, and
-              turn operational bottlenecks into scalable, measurable growth.
-            </p>
-            <p>
-              My path started in customer service — 3+ years handling phone,
-              chat, and email support with 95–100% CSAT & QA scores. That
-              front-line experience is what makes my automation different: I
-              know exactly where customers get stuck, where teams waste
-              cycles, and where the ROI actually lives.
-            </p>
-            <p>
-              Today I combine that operator empathy with GoHighLevel, Zapier,
-              AI, and CRM engineering to help small businesses, agencies,
-              clinics, and service brands operate like enterprise teams —
-              without enterprise overhead.
-            </p>
-            <div className="pt-2">
+          <div className="lg:col-span-3">
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary">
+              <span className="size-1.5 rounded-full bg-primary" /> About
+            </div>
+            <h2 className="mt-3 text-3xl md:text-5xl font-black tracking-tight text-foreground leading-tight">
+              Automation first. <span className="gradient-text">Business focused.</span>
+            </h2>
+            <div className="mt-8 space-y-5 text-muted-foreground text-lg leading-relaxed">
+              <p>
+                I&apos;m Jake — I design intelligent business automation systems
+                that eliminate repetitive work, optimize customer journeys, and
+                turn operational bottlenecks into scalable, measurable growth.
+              </p>
+              <p>
+                My path started in customer service — 3+ years handling phone,
+                chat, and email support with 95–100% CSAT & QA scores. That
+                front-line experience is what makes my automation different: I
+                know exactly where customers get stuck, where teams waste
+                cycles, and where the ROI actually lives.
+              </p>
+              <p>
+                Today I combine that operator empathy with GoHighLevel, Zapier,
+                AI, and CRM engineering to help small businesses, agencies,
+                clinics, and service brands operate like enterprise teams —
+                without enterprise overhead.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3 text-sm font-semibold text-foreground hover:border-primary/50 transition-colors"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-6 py-3 text-sm font-semibold text-foreground hover:border-primary/50 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 transition-all overflow-hidden"
               >
+                <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 transition-opacity" />
                 View Experience →
               </Link>
+              <div className="flex items-center gap-2">
+                {[
+                  { label: "WhatsApp", href: "https://wa.me/", slug: "whatsapp" },
+                  { label: "LinkedIn", href: "https://linkedin.com/", slug: "linkedin" },
+                  { label: "Phone", href: "tel:+1", slug: "phone" },
+                ].map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target={s.slug === "phone" ? undefined : "_blank"}
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="grid place-items-center size-11 rounded-full border border-border bg-card/60 backdrop-blur text-foreground hover:border-primary/50 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 transition-all"
+                  >
+                    {s.slug === "whatsapp" && (
+                      <svg viewBox="0 0 24 24" className="size-5 fill-current"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.12 1.6 5.92L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.55 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.15-3.38-8.43zM12.05 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.22-3.8 1 1.02-3.7-.24-.38a9.87 9.87 0 0 1-1.52-5.27c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 6.99c0 5.45-4.44 9.94-9.84 9.94zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.48s1.08 2.88 1.23 3.08c.15.2 2.12 3.24 5.15 4.55.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+                    )}
+                    {s.slug === "linkedin" && (
+                      <svg viewBox="0 0 24 24" className="size-5 fill-current"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8h4.52v14H.24V8zm7.5 0h4.33v1.92h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V22h-4.5v-6.65c0-1.58-.03-3.62-2.2-3.62-2.2 0-2.54 1.72-2.54 3.5V22h-4.5V8z"/></svg>
+                    )}
+                    {s.slug === "phone" && (
+                      <svg viewBox="0 0 24 24" className="size-5 fill-current"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg>
+                    )}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
           <div className="lg:col-span-2">
@@ -291,18 +322,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-        {/* Highlights — horizontal row below description */}
-        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
-          {highlights.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-border bg-card/50 backdrop-blur px-4 py-2 text-sm text-foreground hover:border-primary/50 transition-colors"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
-      </Section>
+      </section>
 
       {/* SERVICES */}
       <Section eyebrow="Services" title={<>Six modules. <span className="gradient-text">One operating system.</span></>}>
@@ -341,35 +361,66 @@ function HomePage() {
       {/* FEATURED PROJECTS */}
       <Section eyebrow="Portfolio" title={<>Featured <span className="gradient-text">systems shipped</span>.</>}>
         <div className="grid md:grid-cols-3 gap-4">
-          {projects.map((p) => (
-            <Link
-              key={p.slug}
-              to="/portfolio/$slug"
-              params={{ slug: p.slug }}
-              className="group relative rounded-2xl border border-border bg-card/50 overflow-hidden hover:border-primary/50 transition-colors"
-            >
-              <div className={`h-40 relative bg-gradient-to-br ${p.color}`}>
-                <div className="absolute inset-0 grid-bg opacity-30" />
-                <div className="absolute bottom-3 left-3 text-[10px] font-mono uppercase tracking-widest text-white/80 bg-black/30 backdrop-blur px-2 py-1 rounded">
-                  {p.industry}
-                </div>
+          {projects.map((p) => {
+            const isDental = p.slug === "dental-practice-crm";
+            const videoId = "pF4k9boYApA";
+            return (
+              <div
+                key={p.slug}
+                className="group relative rounded-2xl border border-border bg-card/50 overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
+              >
+                {isDental ? (
+                  <a
+                    href={`https://youtu.be/${videoId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-40 relative overflow-hidden"
+                    aria-label="Watch demo on YouTube"
+                  >
+                    <img
+                      src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                      alt={`${p.title} video thumbnail`}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+                    <div className="absolute inset-0 grid place-items-center">
+                      <span className="grid place-items-center size-14 rounded-full bg-white/95 text-black shadow-xl group-hover:scale-110 transition-transform">
+                        <svg viewBox="0 0 24 24" className="size-6 fill-current ml-0.5"><path d="M8 5v14l11-7z"/></svg>
+                      </span>
+                    </div>
+                    <div className="absolute bottom-3 left-3 text-[10px] font-mono uppercase tracking-widest text-white bg-black/50 backdrop-blur px-2 py-1 rounded">
+                      {p.industry} · Watch demo
+                    </div>
+                  </a>
+                ) : (
+                  <div className={`h-40 relative bg-gradient-to-br ${p.color}`}>
+                    <div className="absolute inset-0 grid-bg opacity-30" />
+                    <div className="absolute bottom-3 left-3 text-[10px] font-mono uppercase tracking-widest text-white/80 bg-black/30 backdrop-blur px-2 py-1 rounded">
+                      {p.industry}
+                    </div>
+                  </div>
+                )}
+                <Link
+                  to="/portfolio/$slug"
+                  params={{ slug: p.slug }}
+                  className="p-5 flex-1 flex flex-col"
+                >
+                  <div className="text-lg font-bold text-foreground">{p.title}</div>
+                  <div className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.desc}</div>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {p.stack.map((s) => (
+                      <span key={s} className="rounded-full border border-border bg-background/50 px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-xs font-semibold text-primary group-hover:gap-2 flex items-center gap-1 transition-all">
+                    View case study →
+                  </div>
+                </Link>
               </div>
-              <div className="p-5">
-                <div className="text-lg font-bold text-foreground">{p.title}</div>
-                <div className="mt-2 text-sm text-muted-foreground line-clamp-3">{p.desc}</div>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {p.stack.map((s) => (
-                    <span key={s} className="rounded-full border border-border bg-background/50 px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 text-xs font-semibold text-primary group-hover:gap-2 flex items-center gap-1 transition-all">
-                  View case study →
-                </div>
-              </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
         <div className="mt-8 text-center">
           <Link to="/portfolio" className="text-sm text-muted-foreground hover:text-foreground">
