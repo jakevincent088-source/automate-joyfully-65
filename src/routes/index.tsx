@@ -223,7 +223,7 @@ function HomePage() {
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { v: 3, s: "+", l: "Yrs Customer Support" },
-                { v: 15, s: "+", l: "Portfolio Projects" },
+                { v: 10, s: "+", l: "CRM Systems Built" },
                 { v: 30, s: "+", l: "Workflows Built" },
                 { v: 98, s: "%", l: "CSAT & QA Score" },
               ].map((s) => (
