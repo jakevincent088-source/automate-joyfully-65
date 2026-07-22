@@ -440,64 +440,71 @@ function HomePage() {
 
       {/* WORKFLOW SHOWCASE */}
       <Section eyebrow="Workflow Library" title={<>Interactive <span className="gradient-text">workflow blueprints</span>.</>}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-          {["Lead Capture", "Missed Call Text Back", "Appointment Booking", "Lead Qualification", "Pipeline Automation", "Email Follow-Up", "Review Requests", "AI Chat Assistant"].map((w) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { name: "Lead Capture", icon: "◎", grad: "from-primary to-secondary" },
+            { name: "Missed Call Text Back", icon: "☎", grad: "from-secondary to-accent" },
+            { name: "Appointment Booking", icon: "◐", grad: "from-accent to-primary" },
+            { name: "Lead Qualification", icon: "✦", grad: "from-primary to-accent" },
+            { name: "Pipeline Automation", icon: "⇥", grad: "from-secondary to-primary" },
+            { name: "Email Follow-Up", icon: "✉", grad: "from-accent to-secondary" },
+            { name: "Review Requests", icon: "★", grad: "from-primary to-secondary" },
+            { name: "AI Chat Assistant", icon: "◈", grad: "from-secondary to-accent" },
+          ].map((w, idx) => (
             <Link
-              key={w}
+              key={w.name}
               to="/workflows"
-              className="group rounded-xl border border-border bg-card/50 p-4 hover:border-accent/50 transition-colors"
+              style={{ animationDelay: `${idx * 80}ms` }}
+              className="group relative rounded-2xl border border-border bg-card/60 backdrop-blur p-5 overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 animate-fade-in"
             >
-              <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-muted">
-                <span className="size-1.5 rounded-full bg-accent" /> Workflow
+              <div className={`absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${w.grad} transition-opacity duration-500`} style={{ maskImage: "radial-gradient(circle at 30% 20%, black, transparent 70%)" }} />
+              <div className={`absolute -top-10 -right-10 size-32 rounded-full bg-gradient-to-br ${w.grad} opacity-20 blur-2xl group-hover:opacity-60 group-hover:scale-125 transition-all duration-500`} />
+              <div className="flex items-center justify-between">
+                <div className={`grid place-items-center size-10 rounded-xl bg-gradient-to-br ${w.grad} text-white text-lg font-black shadow-lg group-hover:rotate-6 transition-transform`}>
+                  {w.icon}
+                </div>
+                <span className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-1">
+                  <span className="size-1.5 rounded-full bg-accent animate-pulse" /> Live
+                </span>
               </div>
-              <div className="mt-2 text-sm font-semibold text-foreground">{w}</div>
-              <div className="mt-3 h-8 flex items-center gap-1">
-                {[0,1,2,3,4].map((i) => (
-                  <div key={i} className="flex-1 h-2 rounded-full bg-gradient-to-r from-primary/40 via-secondary/40 to-accent/40 group-hover:from-primary group-hover:via-secondary group-hover:to-accent transition-all" style={{ opacity: 0.4 + i * 0.15 }} />
+              <div className="mt-4 text-sm font-bold text-foreground">{w.name}</div>
+              <div className="mt-4 h-10 flex items-end gap-1">
+                {[0,1,2,3,4,5,6,7].map((i) => (
+                  <div
+                    key={i}
+                    className={`flex-1 rounded-sm bg-gradient-to-t ${w.grad} opacity-40 group-hover:opacity-100 transition-all duration-500`}
+                    style={{ height: `${30 + ((i * 17) % 60)}%`, transitionDelay: `${i * 40}ms` }}
+                  />
                 ))}
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-[10px] font-mono text-muted-foreground">Blueprint</span>
+                <span className="text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">Open →</span>
               </div>
             </Link>
           ))}
         </div>
-      </Section>
 
-      {/* TECH STACK */}
-      <Section eyebrow="Tech Stack" title={<>Tools I ship with, <span className="gradient-text">daily</span>.</>}>
-        <div className="space-y-4">
-          {[false, true].map((reverse) => (
-            <div
-              key={String(reverse)}
-              className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]"
-            >
+        {/* MARQUEE TOOLS ROW */}
+        <div className="mt-10 relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex gap-4 w-max animate-marquee">
+            {[...techItems, ...techItems].map((t, i) => (
               <div
-                className="flex gap-4 w-max animate-marquee"
-                style={reverse ? { animationDirection: "reverse" } : undefined}
+                key={`tools-${i}`}
+                className="flex items-center gap-3 rounded-xl border border-border bg-card/60 backdrop-blur px-5 py-3 min-w-max hover:border-primary/50 transition-colors"
               >
-                {[...techItems, ...techItems].map((t, i) => (
-                  <div
-                    key={`${reverse}-${i}`}
-                    className="flex items-center gap-3 rounded-xl border border-border bg-card/60 backdrop-blur px-5 py-3 min-w-max hover:border-primary/50 transition-colors"
-                  >
-                    {t.slug ? (
-                      <img
-                        src={`https://cdn.simpleicons.org/${t.slug}`}
-                        alt=""
-                        className="size-6"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <span className="size-6 rounded-md bg-gradient-to-br from-primary via-secondary to-accent" />
-                    )}
-                    <span className="text-sm font-semibold text-foreground whitespace-nowrap">
-                      {t.name}
-                    </span>
-                  </div>
-                ))}
+                {t.slug ? (
+                  <img src={`https://cdn.simpleicons.org/${t.slug}`} alt="" className="size-6" loading="lazy" />
+                ) : (
+                  <span className="size-6 rounded-md bg-gradient-to-br from-primary via-secondary to-accent" />
+                )}
+                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{t.name}</span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
+
 
       {/* PROCESS */}
       <Section eyebrow="Process" title={<>From discovery to <span className="gradient-text">continuous optimization</span>.</>}>
