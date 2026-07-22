@@ -338,11 +338,12 @@ function HomePage() {
           {services.map((s) => (
             <div
               key={s.title}
-              className="group relative rounded-2xl border border-border bg-card/50 backdrop-blur p-6 overflow-hidden hover:border-primary/50 transition-colors"
+              className="group relative rounded-2xl border border-border bg-card/50 backdrop-blur p-6 overflow-hidden hover:border-primary/60 hover:ring-2 hover:ring-primary/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300"
             >
               <div
-                className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${s.gradient} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`}
+                className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${s.gradient} opacity-20 blur-2xl group-hover:opacity-60 group-hover:scale-125 transition-all duration-500`}
               />
+              <div className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${s.gradient} mix-blend-overlay transition-opacity duration-500`} style={{ maskImage: "radial-gradient(circle at var(--x,50%) var(--y,50%), black 0%, transparent 60%)" }} />
               <div className="relative">
                 <div className="text-[10px] font-mono uppercase tracking-widest text-muted">{s.tag}</div>
                 <div className="mt-2 text-xl font-bold text-foreground">{s.title}</div>
