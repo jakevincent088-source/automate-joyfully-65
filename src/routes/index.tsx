@@ -209,8 +209,8 @@ function HomePage() {
                 View Portfolio
               </Link>
               <a
-                href={resumeAsset.url}
-                download="Jake_AI_Specialist_CV.pdf"
+                href={resumeUrl}
+                download="Jake_AI_Automation_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-accent/60 hover:ring-2 hover:ring-accent/40 hover:-translate-y-0.5 transition-all overflow-hidden"
