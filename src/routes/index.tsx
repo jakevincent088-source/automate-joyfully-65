@@ -323,7 +323,7 @@ function HomePage() {
             <div className="relative rounded-2xl overflow-hidden border border-border bg-card/40">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/30 blur-2xl opacity-60 -z-10" />
               <img
-                src={jakePhoto.url}
+                src={jakePhotoUrl}
                 alt="Jake Vincent Talaba"
                 className="w-full h-auto object-cover"
               />
