@@ -29,6 +29,9 @@
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
   --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-light-travel: light-travel 4s linear infinite;
+  --animate-light-travel-vert: light-travel-vert 4s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
 
   @keyframes node-pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -60,6 +63,22 @@
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes light-travel {
+    0% { left: -20%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 110%; opacity: 0; }
+  }
+  @keyframes light-travel-vert {
+    0% { top: -20%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
   }
 }
 

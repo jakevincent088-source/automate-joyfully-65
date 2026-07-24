@@ -439,51 +439,52 @@ function HomePage() {
       </Section>
 
       {/* WORKFLOW SHOWCASE */}
-      <Section eyebrow="Workflow Library" title={<>Interactive <span className="gradient-text">workflow blueprints</span>.</>}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { name: "Lead Capture", icon: "◎", grad: "from-primary to-secondary" },
-            { name: "Missed Call Text Back", icon: "☎", grad: "from-secondary to-accent" },
-            { name: "Appointment Booking", icon: "◐", grad: "from-accent to-primary" },
-            { name: "Lead Qualification", icon: "✦", grad: "from-primary to-accent" },
-            { name: "Pipeline Automation", icon: "⇥", grad: "from-secondary to-primary" },
-            { name: "Email Follow-Up", icon: "✉", grad: "from-accent to-secondary" },
-            { name: "Review Requests", icon: "★", grad: "from-primary to-secondary" },
-            { name: "AI Chat Assistant", icon: "◈", grad: "from-secondary to-accent" },
-          ].map((w, idx) => (
-            <Link
-              key={w.name}
-              to="/workflows"
-              style={{ animationDelay: `${idx * 80}ms` }}
-              className="group relative rounded-2xl border border-border bg-card/60 backdrop-blur p-5 overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 animate-fade-in"
-            >
-              <div className={`absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${w.grad} transition-opacity duration-500`} style={{ maskImage: "radial-gradient(circle at 30% 20%, black, transparent 70%)" }} />
-              <div className={`absolute -top-10 -right-10 size-32 rounded-full bg-gradient-to-br ${w.grad} opacity-20 blur-2xl group-hover:opacity-60 group-hover:scale-125 transition-all duration-500`} />
-              <div className="flex items-center justify-between">
-                <div className={`grid place-items-center size-10 rounded-xl bg-gradient-to-br ${w.grad} text-white text-lg font-black shadow-lg group-hover:rotate-6 transition-transform`}>
-                  {w.icon}
-                </div>
-                <span className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-1">
-                  <span className="size-1.5 rounded-full bg-accent animate-pulse" /> Live
-                </span>
-              </div>
-              <div className="mt-4 text-sm font-bold text-foreground">{w.name}</div>
-              <div className="mt-4 h-10 flex items-end gap-1">
-                {[0,1,2,3,4,5,6,7].map((i) => (
-                  <div
-                    key={i}
-                    className={`flex-1 rounded-sm bg-gradient-to-t ${w.grad} opacity-40 group-hover:opacity-100 transition-all duration-500`}
-                    style={{ height: `${30 + ((i * 17) % 60)}%`, transitionDelay: `${i * 40}ms` }}
-                  />
+      <Section eyebrow="Workflow Library" title={<>Real Screens of <span className="gradient-text">Workflow I built</span>.</>}>
+        {(() => {
+          const shots = [
+            { src: "/images/Lead_Capture.png", name: "Lead Capture" },
+            { src: "/images/Missed_Call_Text_Back.png", name: "Missed Call Text Back" },
+            { src: "/images/Appointment_Booking.png", name: "Appointment Booking" },
+            { src: "/images/Lead_Qualification_AI.png", name: "Lead Qualification AI" },
+            { src: "/images/CRM_Pipeline.png", name: "CRM Pipeline" },
+            { src: "/images/Email_Follow-Up.png", name: "Email Follow-Up" },
+            { src: "/images/Review_Request.png", name: "Review Requests" },
+            { src: "/images/Internal_Notifications.png", name: "Internal Notifications" },
+            { src: "/images/Task_Creation.png", name: "Task Creation" },
+            { src: "/images/Lead_Routing.png", name: "Lead Routing" },
+            { src: "/images/CX_Reengagement.png", name: "Customer Re-engagement" },
+            { src: "/images/Sales_Pipeline.png", name: "Sales Pipeline" },
+            { src: "/images/Dental_Appointment.png", name: "Dental Appointment" },
+            { src: "/images/AI_Chat_Assistant.png", name: "AI Chat Assistant" },
+            { src: "/images/Voice_AI_Receptionist.png", name: "Voice AI Receptionist" },
+          ];
+          return (
+            <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
+              <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
+                {[...shots, ...shots].map((s, i) => (
+                  <Link
+                    key={`shot-${i}`}
+                    to="/workflows"
+                    className="relative shrink-0 w-[340px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
+                  >
+                    <div className="aspect-video overflow-hidden bg-background/40">
+                      <img
+                        src={s.src}
+                        alt={`${s.name} workflow screenshot`}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-sm font-semibold text-foreground">{s.name}</span>
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-accent">Live →</span>
+                    </div>
+                  </Link>
                 ))}
               </div>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-[10px] font-mono text-muted-foreground">Blueprint</span>
-                <span className="text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">Open →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+            </div>
+          );
+        })()}
 
         {/* MARQUEE TOOLS ROW */}
         <div className="mt-10 relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
@@ -506,20 +507,44 @@ function HomePage() {
       </Section>
 
 
+
       {/* PROCESS */}
       <Section eyebrow="Process" title={<>From discovery to <span className="gradient-text">continuous optimization</span>.</>}>
         <div className="relative">
-          <div className="pointer-events-none absolute top-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden lg:block" />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 gap-3">
-            {process.map((p) => (
-              <div key={p.n} className="rounded-xl border border-border bg-card/40 p-3">
-                <div className="relative">
-                  <div className="size-12 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-black text-sm shadow-lg shadow-secondary/30">
+          {/* Horizontal connecting rail with traveling light (lg+) */}
+          <div className="pointer-events-none absolute top-6 left-6 right-6 h-px hidden lg:block overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            <div
+              className="absolute top-1/2 -translate-y-1/2 h-[6px] w-24 rounded-full bg-gradient-to-r from-transparent via-accent to-transparent blur-[2px] animate-light-travel"
+              style={{ boxShadow: "0 0 20px 4px rgb(6 182 212 / 0.7)" }}
+            />
+          </div>
+          {/* Vertical rail for small screens */}
+          <div className="pointer-events-none absolute left-6 top-0 bottom-0 w-px lg:hidden overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/40 to-transparent" />
+            <div
+              className="absolute left-1/2 -translate-x-1/2 w-[6px] h-16 rounded-full bg-gradient-to-b from-transparent via-accent to-transparent blur-[2px] animate-light-travel-vert"
+              style={{ boxShadow: "0 0 20px 4px rgb(6 182 212 / 0.7)" }}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-9 gap-4 lg:gap-3">
+            {process.map((p, idx) => (
+              <div
+                key={p.n}
+                style={{ animationDelay: `${idx * 80}ms` }}
+                className="group relative rounded-xl border border-border bg-card/50 backdrop-blur p-4 hover:border-primary/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 animate-fade-in"
+              >
+                <div className="absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/15 via-secondary/15 to-accent/15 transition-opacity duration-500" />
+                <div className="relative flex lg:justify-center">
+                  {/* Pulsing ring behind number */}
+                  <span className="absolute lg:left-1/2 lg:-translate-x-1/2 top-0 size-12 rounded-full bg-accent/40 animate-pulse-ring" />
+                  <div className="relative size-12 rounded-full bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center text-white font-black text-sm shadow-lg shadow-secondary/40 group-hover:scale-110 transition-transform">
                     {p.n}
                   </div>
                 </div>
-                <div className="mt-3 text-center text-xs font-semibold text-foreground">{p.t}</div>
-                <div className="mt-1 text-center text-[11px] text-muted-foreground leading-snug">{p.d}</div>
+                <div className="mt-4 text-center text-xs font-bold text-foreground uppercase tracking-wide">{p.t}</div>
+                <div className="mt-1.5 text-center text-[11px] text-muted-foreground leading-snug">{p.d}</div>
               </div>
             ))}
           </div>
@@ -548,49 +573,33 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* CERTIFICATIONS */}
-      <Section eyebrow="Certifications" title={<>Actively learning. <span className="gradient-text">Always shipping.</span></>}>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="rounded-2xl border border-border bg-card/50 p-6">
-            <div className="text-xs font-mono uppercase tracking-widest text-accent">Current Focus</div>
-            <ul className="mt-4 space-y-2 text-sm text-foreground">
-              {["GoHighLevel Mastery", "AI Automation Systems", "Workflow Engineering", "CRM Optimization", "Zapier Advanced"].map((c) => (
-                <li key={c} className="flex items-center gap-2">
-                  <span className="size-1.5 rounded-full bg-accent" /> {c}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-border bg-card/50 p-6">
-            <div className="text-xs font-mono uppercase tracking-widest text-secondary">On the Roadmap</div>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {["Official GoHighLevel Certification", "HubSpot CRM Certification", "Salesforce Trailhead", "Make Certification", "OpenAI Courses", "Google AI Certifications"].map((c) => (
-                <li key={c} className="flex items-center gap-2">
-                  <span className="size-1.5 rounded-full bg-secondary" /> {c}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
-
       {/* FAQ */}
       <Section eyebrow="FAQ" title={<>Common <span className="gradient-text">questions</span>.</>}>
         <div className="grid md:grid-cols-2 gap-3">
           {faqs.map((f) => (
-            <details
+            <div
               key={f.q}
-              className="group rounded-xl border border-border bg-card/40 p-5 open:border-primary/50 transition-colors"
+              tabIndex={0}
+              className="group relative rounded-xl border border-border bg-card/40 p-5 overflow-hidden cursor-pointer transition-all duration-300 hover:border-primary/60 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-primary/20 focus:border-primary/60 focus:outline-none"
             >
-              <summary className="flex items-center justify-between cursor-pointer list-none">
+              <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 group-focus:opacity-100 bg-gradient-to-br from-primary/15 via-secondary/15 to-accent/15 transition-opacity duration-500" />
+              <div className="absolute -top-16 -right-16 size-40 rounded-full bg-gradient-to-br from-primary to-accent opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-500" />
+              <div className="flex items-center justify-between">
                 <span className="font-semibold text-foreground">{f.q}</span>
-                <span className="text-primary group-open:rotate-45 transition-transform">+</span>
-              </summary>
-              <div className="mt-3 text-sm text-muted-foreground">{f.a}</div>
-            </details>
+                <span className="text-primary transition-transform duration-300 group-hover:rotate-45 group-focus:rotate-45">+</span>
+              </div>
+              <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                <div className="overflow-hidden">
+                  <div className="pt-3 text-sm text-muted-foreground opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 delay-100">
+                    {f.a}
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </Section>
+
 
       {/* FINAL CTA */}
       <section className="relative">
