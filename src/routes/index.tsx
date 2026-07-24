@@ -439,51 +439,52 @@ function HomePage() {
       </Section>
 
       {/* WORKFLOW SHOWCASE */}
-      <Section eyebrow="Workflow Library" title={<>Interactive <span className="gradient-text">workflow blueprints</span>.</>}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { name: "Lead Capture", icon: "◎", grad: "from-primary to-secondary" },
-            { name: "Missed Call Text Back", icon: "☎", grad: "from-secondary to-accent" },
-            { name: "Appointment Booking", icon: "◐", grad: "from-accent to-primary" },
-            { name: "Lead Qualification", icon: "✦", grad: "from-primary to-accent" },
-            { name: "Pipeline Automation", icon: "⇥", grad: "from-secondary to-primary" },
-            { name: "Email Follow-Up", icon: "✉", grad: "from-accent to-secondary" },
-            { name: "Review Requests", icon: "★", grad: "from-primary to-secondary" },
-            { name: "AI Chat Assistant", icon: "◈", grad: "from-secondary to-accent" },
-          ].map((w, idx) => (
-            <Link
-              key={w.name}
-              to="/workflows"
-              style={{ animationDelay: `${idx * 80}ms` }}
-              className="group relative rounded-2xl border border-border bg-card/60 backdrop-blur p-5 overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 animate-fade-in"
-            >
-              <div className={`absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 bg-gradient-to-br ${w.grad} transition-opacity duration-500`} style={{ maskImage: "radial-gradient(circle at 30% 20%, black, transparent 70%)" }} />
-              <div className={`absolute -top-10 -right-10 size-32 rounded-full bg-gradient-to-br ${w.grad} opacity-20 blur-2xl group-hover:opacity-60 group-hover:scale-125 transition-all duration-500`} />
-              <div className="flex items-center justify-between">
-                <div className={`grid place-items-center size-10 rounded-xl bg-gradient-to-br ${w.grad} text-white text-lg font-black shadow-lg group-hover:rotate-6 transition-transform`}>
-                  {w.icon}
-                </div>
-                <span className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground flex items-center gap-1">
-                  <span className="size-1.5 rounded-full bg-accent animate-pulse" /> Live
-                </span>
-              </div>
-              <div className="mt-4 text-sm font-bold text-foreground">{w.name}</div>
-              <div className="mt-4 h-10 flex items-end gap-1">
-                {[0,1,2,3,4,5,6,7].map((i) => (
-                  <div
-                    key={i}
-                    className={`flex-1 rounded-sm bg-gradient-to-t ${w.grad} opacity-40 group-hover:opacity-100 transition-all duration-500`}
-                    style={{ height: `${30 + ((i * 17) % 60)}%`, transitionDelay: `${i * 40}ms` }}
-                  />
+      <Section eyebrow="Workflow Library" title={<>Real Screens of <span className="gradient-text">Workflow I built</span>.</>}>
+        {(() => {
+          const shots = [
+            { src: "/images/Lead_Capture.png", name: "Lead Capture" },
+            { src: "/images/Missed_Call_Text_Back.png", name: "Missed Call Text Back" },
+            { src: "/images/Appointment_Booking.png", name: "Appointment Booking" },
+            { src: "/images/Lead_Qualification_AI.png", name: "Lead Qualification AI" },
+            { src: "/images/CRM_Pipeline.png", name: "CRM Pipeline" },
+            { src: "/images/Email_Follow-Up.png", name: "Email Follow-Up" },
+            { src: "/images/Review_Request.png", name: "Review Requests" },
+            { src: "/images/Internal_Notifications.png", name: "Internal Notifications" },
+            { src: "/images/Task_Creation.png", name: "Task Creation" },
+            { src: "/images/Lead_Routing.png", name: "Lead Routing" },
+            { src: "/images/CX_Reengagement.png", name: "Customer Re-engagement" },
+            { src: "/images/Sales_Pipeline.png", name: "Sales Pipeline" },
+            { src: "/images/Dental_Appointment.png", name: "Dental Appointment" },
+            { src: "/images/AI_Chat_Assistant.png", name: "AI Chat Assistant" },
+            { src: "/images/Voice_AI_Receptionist.png", name: "Voice AI Receptionist" },
+          ];
+          return (
+            <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
+              <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
+                {[...shots, ...shots].map((s, i) => (
+                  <Link
+                    key={`shot-${i}`}
+                    to="/workflows"
+                    className="relative shrink-0 w-[340px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
+                  >
+                    <div className="aspect-video overflow-hidden bg-background/40">
+                      <img
+                        src={s.src}
+                        alt={`${s.name} workflow screenshot`}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between px-4 py-3">
+                      <span className="text-sm font-semibold text-foreground">{s.name}</span>
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-accent">Live →</span>
+                    </div>
+                  </Link>
                 ))}
               </div>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-[10px] font-mono text-muted-foreground">Blueprint</span>
-                <span className="text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">Open →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+            </div>
+          );
+        })()}
 
         {/* MARQUEE TOOLS ROW */}
         <div className="mt-10 relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
@@ -504,6 +505,7 @@ function HomePage() {
           </div>
         </div>
       </Section>
+
 
 
       {/* PROCESS */}
