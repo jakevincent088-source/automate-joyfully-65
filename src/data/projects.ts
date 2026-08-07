@@ -48,6 +48,7 @@ export const projects: Project[] = [
       "AI works best when scoped to a narrow, high-value task",
     ],
     color: "from-primary/40 to-secondary/40",
+    videoId: "pF4k9boYApA",
   },
   {
     slug: "ai-workflow-portfolio",
