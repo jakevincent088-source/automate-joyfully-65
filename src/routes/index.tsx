@@ -496,7 +496,41 @@ function HomePage() {
             ))}
           </div>
         </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/workflows"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white text-sm font-semibold px-7 py-3.5 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-primary/30 transition-all"
+          >
+            View blueprints →
+          </Link>
+        </div>
       </Section>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] grid place-items-center bg-background/90 backdrop-blur-sm p-4 animate-fade-in"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="relative max-w-6xl w-full animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Close preview"
+              className="absolute -top-11 right-0 rounded-full border border-border bg-card/80 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground hover:border-primary/60 transition-colors"
+            >
+              Close ✕
+            </button>
+            <img
+              src={lightbox}
+              alt="Workflow screenshot enlarged"
+              className="w-full max-h-[85vh] object-contain rounded-2xl border border-border shadow-2xl shadow-primary/20"
+            />
+          </div>
+        </div>
+      )}
 
 
 
