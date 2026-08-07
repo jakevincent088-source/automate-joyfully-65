@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Counter } from "../components/counter";
 import { HeroDashboard } from "../components/hero-dashboard";
 
@@ -93,22 +94,25 @@ const projects = [
     desc: "End-to-end GoHighLevel CRM for a simulated clinic — booking, segmentation, AI comms, and full email/SMS orchestration.",
     stack: ["GoHighLevel", "Zapier", "Twilio", "OpenAI"],
     color: "from-primary/40 to-secondary/40",
+    videoId: "pF4k9boYApA",
   },
   {
-    slug: "ai-workflow-portfolio",
+    slug: "appointment-booking-automation",
     industry: "Multi-industry",
-    title: "AI Workflow Automation Portfolio",
-    desc: "A collection of automations connecting CRMs with third-party apps — lead management, follow-ups, tasks, AI ops.",
-    stack: ["Zapier", "OpenAI", "Slack", "Google"],
+    title: "Appointment Booking Automation",
+    desc: "Self-serve booking engine with confirmations, layered reminders, reschedule links, and no-show recovery wired to the CRM.",
+    stack: ["GoHighLevel", "Calendly", "Zapier", "Twilio"],
     color: "from-secondary/40 to-accent/40",
+    videoId: "B-SRCvwclDQ",
   },
   {
-    slug: "crm-funnel-management",
-    industry: "Marketing",
-    title: "CRM & Funnel Management Project",
-    desc: "Landing pages, forms, surveys, pipelines, Smart Lists, lead routing, and automated follow-up campaigns.",
-    stack: ["GHL", "Stripe", "Calendly", "Twilio"],
+    slug: "ai-chatbot-assistance",
+    industry: "Multi-industry",
+    title: "AI Chatbot Assistance",
+    desc: "Knowledge-grounded AI assistant that answers instantly, qualifies leads, and escalates to humans with full context.",
+    stack: ["OpenAI", "GoHighLevel", "Zapier", "Slack"],
     color: "from-accent/40 to-primary/40",
+    videoId: "SjdCiGsxJAg",
   },
 ];
 
@@ -148,7 +152,19 @@ const faqs = [
   { q: "Do you provide post-launch support?", a: "Yes — documentation, SOPs, monitoring dashboards, and continuous optimization retainers are available." },
 ];
 
+const screens = [
+  "/images/dashboard.png",
+  "/images/crm.png",
+  "/images/workflow.png",
+  "/images/agent.png",
+  "/images/lead.png",
+  "/images/lead2.png",
+  "/images/Zapier1.png",
+  "/images/zapier2.png",
+];
+
 function HomePage() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
   return (
     <div className="relative">
       {/* HERO */}
@@ -371,14 +387,13 @@ function HomePage() {
       <Section eyebrow="Portfolio" title={<>Featured <span className="gradient-text">systems shipped</span>.</>}>
         <div className="grid md:grid-cols-3 gap-4">
           {projects.map((p) => {
-            const isDental = p.slug === "dental-practice-crm";
-            const videoId = "pF4k9boYApA";
+            const videoId = p.videoId;
             return (
               <div
                 key={p.slug}
                 className="group relative rounded-2xl border border-border bg-card/50 overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
               >
-                {isDental ? (
+                {videoId ? (
                   <a
                     href={`https://youtu.be/${videoId}`}
                     target="_blank"
@@ -440,51 +455,28 @@ function HomePage() {
 
       {/* WORKFLOW SHOWCASE */}
       <Section eyebrow="Workflow Library" title={<>Real Screens of <span className="gradient-text">Workflow I built</span>.</>}>
-        {(() => {
-          const shots = [
-            { src: "/images/Lead_Capture.png", name: "Lead Capture" },
-            { src: "/images/Missed_Call_Text_Back.png", name: "Missed Call Text Back" },
-            { src: "/images/Appointment_Booking.png", name: "Appointment Booking" },
-            { src: "/images/Lead_Qualification_AI.png", name: "Lead Qualification AI" },
-            { src: "/images/CRM_Pipeline.png", name: "CRM Pipeline" },
-            { src: "/images/Email_Follow-Up.png", name: "Email Follow-Up" },
-            { src: "/images/Review_Request.png", name: "Review Requests" },
-            { src: "/images/Internal_Notifications.png", name: "Internal Notifications" },
-            { src: "/images/Task_Creation.png", name: "Task Creation" },
-            { src: "/images/Lead_Routing.png", name: "Lead Routing" },
-            { src: "/images/CX_Reengagement.png", name: "Customer Re-engagement" },
-            { src: "/images/Sales_Pipeline.png", name: "Sales Pipeline" },
-            { src: "/images/Dental_Appointment.png", name: "Dental Appointment" },
-            { src: "/images/AI_Chat_Assistant.png", name: "AI Chat Assistant" },
-            { src: "/images/Voice_AI_Receptionist.png", name: "Voice AI Receptionist" },
-          ];
-          return (
-            <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
-              <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
-                {[...shots, ...shots].map((s, i) => (
-                  <Link
-                    key={`shot-${i}`}
-                    to="/workflows"
-                    className="relative shrink-0 w-[340px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
-                  >
-                    <div className="aspect-video overflow-hidden bg-background/40">
-                      <img
-                        src={s.src}
-                        alt={`${s.name} workflow screenshot`}
-                        loading="lazy"
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="flex items-center justify-between px-4 py-3">
-                      <span className="text-sm font-semibold text-foreground">{s.name}</span>
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-accent">Live →</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
+        <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
+            {[...screens, ...screens].map((src, i) => (
+              <button
+                key={`shot-${i}`}
+                type="button"
+                onClick={() => setLightbox(src)}
+                aria-label="View workflow screenshot"
+                className="relative shrink-0 w-[380px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
+              >
+                <div className="aspect-video overflow-hidden bg-background/40">
+                  <img
+                    src={src}
+                    alt="Workflow screenshot"
+                    loading="lazy"
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* MARQUEE TOOLS ROW */}
         <div className="mt-10 relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
@@ -504,7 +496,41 @@ function HomePage() {
             ))}
           </div>
         </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/workflows"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white text-sm font-semibold px-7 py-3.5 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-primary/30 transition-all"
+          >
+            View blueprints →
+          </Link>
+        </div>
       </Section>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] grid place-items-center bg-background/90 backdrop-blur-sm p-4 animate-fade-in"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="relative max-w-6xl w-full animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Close preview"
+              className="absolute -top-11 right-0 rounded-full border border-border bg-card/80 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground hover:border-primary/60 transition-colors"
+            >
+              Close ✕
+            </button>
+            <img
+              src={lightbox}
+              alt="Workflow screenshot enlarged"
+              className="w-full max-h-[85vh] object-contain rounded-2xl border border-border shadow-2xl shadow-primary/20"
+            />
+          </div>
+        </div>
+      )}
 
 
 

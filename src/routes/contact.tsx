@@ -65,17 +65,42 @@ function Contact() {
           <div className="lg:col-span-2 space-y-4">
             <GlassCard>
               <div className="text-xs font-mono uppercase tracking-widest text-primary">Book directly</div>
-              <div className="mt-3 aspect-video rounded-xl border border-dashed border-border bg-background/40 grid place-items-center text-muted">
-                Calendly embed placeholder
+              <div className="mt-3 rounded-xl overflow-hidden border border-border bg-background/40">
+                <iframe
+                  src="https://calendly.com/jakevincent088/let-me-automate?hide_gdpr_banner=1&background_color=111827&text_color=e5e7eb&primary_color=2563eb"
+                  title="Book a discovery call with Jake Talaba"
+                  className="w-full h-[620px]"
+                  loading="lazy"
+                />
               </div>
+              <a
+                href="https://calendly.com/jakevincent088/let-me-automate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 block text-center rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white text-sm font-semibold py-3 hover:ring-2 hover:ring-primary/40 transition-all"
+              >
+                Open Calendly →
+              </a>
             </GlassCard>
             <GlassCard>
               <div className="text-xs font-mono uppercase tracking-widest text-accent">Or reach out on</div>
               <ul className="mt-3 space-y-2 text-sm">
-                <li className="flex justify-between"><span className="text-muted-foreground">Email</span><span className="text-foreground font-mono">hello@jaketalaba.io</span></li>
-                <li className="flex justify-between"><span className="text-muted-foreground">LinkedIn</span><span className="text-foreground font-mono">/jaketalaba</span></li>
-                <li className="flex justify-between"><span className="text-muted-foreground">GitHub</span><span className="text-foreground font-mono">/jaketalaba</span></li>
-                <li className="flex justify-between"><span className="text-muted-foreground">WhatsApp</span><span className="text-foreground font-mono">On request</span></li>
+                <li className="flex justify-between gap-3">
+                  <span className="text-muted-foreground">Email</span>
+                  <a href="mailto:jakevincent088@gmail.com" className="text-foreground font-mono hover:text-primary transition-colors">jakevincent088@gmail.com</a>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="text-muted-foreground">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/jake-talaba" target="_blank" rel="noopener noreferrer" className="text-foreground font-mono hover:text-primary transition-colors">in/jake-talaba</a>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="text-muted-foreground">Phone</span>
+                  <a href="tel:+639154662899" className="text-foreground font-mono hover:text-primary transition-colors">+63 915-466-2899</a>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="text-muted-foreground">WhatsApp</span>
+                  <a href="https://wa.me/639154662899" target="_blank" rel="noopener noreferrer" className="text-foreground font-mono hover:text-primary transition-colors">+63 915-466-2899</a>
+                </li>
               </ul>
             </GlassCard>
             <div className="rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 p-6 text-center">

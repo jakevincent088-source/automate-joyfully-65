@@ -67,11 +67,11 @@ function ProjectDetail() {
             </GlassCard>
             <GlassCard>
               <div className="text-xs font-mono uppercase tracking-widest text-secondary">Video Walkthrough</div>
-              {p.slug === "dental-practice-crm" ? (
+              {p.videoId ? (
                 <div className="mt-3 aspect-video rounded-xl overflow-hidden border border-border bg-black">
                   <iframe
-                    src="https://www.youtube.com/embed/pF4k9boYApA"
-                    title="Dental Practice CRM walkthrough"
+                    src={`https://www.youtube.com/embed/${p.videoId}`}
+                    title={`${p.title} walkthrough`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="w-full h-full"
