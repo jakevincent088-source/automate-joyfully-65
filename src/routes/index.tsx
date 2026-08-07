@@ -374,14 +374,13 @@ function HomePage() {
       <Section eyebrow="Portfolio" title={<>Featured <span className="gradient-text">systems shipped</span>.</>}>
         <div className="grid md:grid-cols-3 gap-4">
           {projects.map((p) => {
-            const isDental = p.slug === "dental-practice-crm";
-            const videoId = "pF4k9boYApA";
+            const videoId = p.videoId;
             return (
               <div
                 key={p.slug}
                 className="group relative rounded-2xl border border-border bg-card/50 overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
               >
-                {isDental ? (
+                {videoId ? (
                   <a
                     href={`https://youtu.be/${videoId}`}
                     target="_blank"
