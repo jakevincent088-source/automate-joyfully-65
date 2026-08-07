@@ -151,7 +151,19 @@ const faqs = [
   { q: "Do you provide post-launch support?", a: "Yes — documentation, SOPs, monitoring dashboards, and continuous optimization retainers are available." },
 ];
 
+const screens = [
+  "/images/dashboard.png",
+  "/images/crm.png",
+  "/images/workflow.png",
+  "/images/agent.png",
+  "/images/lead.png",
+  "/images/lead2.png",
+  "/images/Zapier1.png",
+  "/images/zapier2.png",
+];
+
 function HomePage() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
   return (
     <div className="relative">
       {/* HERO */}
