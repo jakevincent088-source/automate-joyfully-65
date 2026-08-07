@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Counter } from "../components/counter";
 import { HeroDashboard } from "../components/hero-dashboard";
 
