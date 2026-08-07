@@ -442,51 +442,28 @@ function HomePage() {
 
       {/* WORKFLOW SHOWCASE */}
       <Section eyebrow="Workflow Library" title={<>Real Screens of <span className="gradient-text">Workflow I built</span>.</>}>
-        {(() => {
-          const shots = [
-            { src: "/images/Lead_Capture.png", name: "Lead Capture" },
-            { src: "/images/Missed_Call_Text_Back.png", name: "Missed Call Text Back" },
-            { src: "/images/Appointment_Booking.png", name: "Appointment Booking" },
-            { src: "/images/Lead_Qualification_AI.png", name: "Lead Qualification AI" },
-            { src: "/images/CRM_Pipeline.png", name: "CRM Pipeline" },
-            { src: "/images/Email_Follow-Up.png", name: "Email Follow-Up" },
-            { src: "/images/Review_Request.png", name: "Review Requests" },
-            { src: "/images/Internal_Notifications.png", name: "Internal Notifications" },
-            { src: "/images/Task_Creation.png", name: "Task Creation" },
-            { src: "/images/Lead_Routing.png", name: "Lead Routing" },
-            { src: "/images/CX_Reengagement.png", name: "Customer Re-engagement" },
-            { src: "/images/Sales_Pipeline.png", name: "Sales Pipeline" },
-            { src: "/images/Dental_Appointment.png", name: "Dental Appointment" },
-            { src: "/images/AI_Chat_Assistant.png", name: "AI Chat Assistant" },
-            { src: "/images/Voice_AI_Receptionist.png", name: "Voice AI Receptionist" },
-          ];
-          return (
-            <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
-              <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
-                {[...shots, ...shots].map((s, i) => (
-                  <Link
-                    key={`shot-${i}`}
-                    to="/workflows"
-                    className="relative shrink-0 w-[340px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
-                  >
-                    <div className="aspect-video overflow-hidden bg-background/40">
-                      <img
-                        src={s.src}
-                        alt={`${s.name} workflow screenshot`}
-                        loading="lazy"
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="flex items-center justify-between px-4 py-3">
-                      <span className="text-sm font-semibold text-foreground">{s.name}</span>
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-accent">Live →</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
+        <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
+            {[...screens, ...screens].map((src, i) => (
+              <button
+                key={`shot-${i}`}
+                type="button"
+                onClick={() => setLightbox(src)}
+                aria-label="View workflow screenshot"
+                className="relative shrink-0 w-[380px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
+              >
+                <div className="aspect-video overflow-hidden bg-background/40">
+                  <img
+                    src={src}
+                    alt="Workflow screenshot"
+                    loading="lazy"
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* MARQUEE TOOLS ROW */}
         <div className="mt-10 relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
