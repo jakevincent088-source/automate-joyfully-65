@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, GlassCard } from "../components/ui-primitives";
+import { PageHero, Section } from "../components/ui-primitives";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
