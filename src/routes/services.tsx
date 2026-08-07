@@ -63,20 +63,26 @@ function Services() {
       <Section>
         <div className="grid md:grid-cols-2 gap-4">
           {modules.map((m) => (
-            <GlassCard key={m.tag}>
-              <div className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${m.grad} px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-white`}>
+            <div
+              key={m.tag}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur p-6 hover:border-primary/60 hover:ring-2 hover:ring-primary/40 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300"
+            >
+              <div className={`pointer-events-none absolute -top-20 -right-20 h-52 w-52 rounded-full bg-gradient-to-br ${m.grad} opacity-15 blur-3xl group-hover:opacity-60 group-hover:scale-125 transition-all duration-500`} />
+              <div className="relative">
+              <div className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${m.grad} px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-white group-hover:scale-105 origin-left transition-transform`}>
                 {m.tag}
               </div>
               <div className="mt-4 text-2xl font-bold text-foreground">{m.title}</div>
               <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-muted-foreground">
                 {m.items.map((i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <span className="size-1 rounded-full bg-accent" /> {i}
+                  <li key={i} className="flex items-center gap-2 group-hover:text-foreground transition-colors">
+                    <span className="size-1 rounded-full bg-accent group-hover:bg-primary transition-colors" /> {i}
                   </li>
                 ))}
               </ul>
-              <Link to="/contact" className="mt-6 inline-flex text-xs font-semibold text-primary">Request scope →</Link>
-            </GlassCard>
+              <Link to="/contact" className="mt-6 inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all">Request scope →</Link>
+              </div>
+            </div>
           ))}
         </div>
       </Section>
