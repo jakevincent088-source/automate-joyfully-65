@@ -11,6 +11,7 @@ export type Project = {
   impact: string[];
   lessons: string[];
   color: string;
+  videoId?: string;
 };
 
 export const projects: Project[] = [
