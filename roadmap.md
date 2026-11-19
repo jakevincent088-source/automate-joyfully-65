@@ -1,0 +1,5 @@
+- [ ] Update homepage resume, statistics, portfolio heading, tool grid, process steps, and remove Workflow Library and Testimonials sections.
+- [ ] Update portfolio heading/subtitle and align case-study buttons across cards.
+- [ ] Remove Blog from header and Workflow Library from footer; remove obsolete homepage Workflow Library references.
+- [ ] Add complementary section background variation while preserving the existing brand palette.
+- [ ] Run focused tests and verify the homepage and portfolio in the preview; do not publish, deploy, or push.
