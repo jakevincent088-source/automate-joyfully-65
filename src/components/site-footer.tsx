@@ -75,7 +75,6 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link to="/services" className="hover:text-foreground">Services</Link></li>
               <li><Link to="/portfolio" className="hover:text-foreground">Portfolio</Link></li>
-              <li><Link to="/workflows" className="hover:text-foreground">Workflow Library</Link></li>
               <li><Link to="/gallery" className="hover:text-foreground">Funnel Gallery</Link></li>
               <li><Link to="/process" className="hover:text-foreground">Process</Link></li>
             </ul>

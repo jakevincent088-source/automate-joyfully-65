@@ -6,9 +6,11 @@ export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — AI Automation & CRM Projects" },
-      { name: "description", content: "GoHighLevel CRMs, AI workflow automations, funnels, and end-to-end business operating systems." },
-      { property: "og:title", content: "Portfolio · Jake Talaba" },
-      { property: "og:description", content: "Featured automation and CRM projects." },
+      { name: "description", content: "Explore AI workflows, API integrations, lead enrichment, and a live standalone desktop system used in municipal government operations." },
+      { property: "og:title", content: "Workflow and Integration Projects — Jake Talaba" },
+      { property: "og:description", content: "Explore AI workflows, API integrations, lead enrichment, and a live standalone desktop system used in municipal government operations." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Portfolio,
@@ -19,8 +21,8 @@ function Portfolio() {
     <div>
       <PageHero
         eyebrow="Portfolio"
-        title={<>Featured <span className="gradient-text">systems shipped</span>.</>}
-        sub="Every project is designed to replicate real-world business scenarios using industry best practices."
+        title={<>WORKFLOW AND INTEGRATION PROJECTS</>}
+        sub="Explore AI workflows, API integrations, lead enrichment, and a live standalone desktop system used in municipal government operations."
       />
       <Section>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -73,7 +75,7 @@ function Portfolio() {
                   <Link
                     to="/portfolio/$slug"
                     params={{ slug: p.slug }}
-                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white text-xs font-semibold px-4 py-2.5 hover:ring-2 hover:ring-primary/40 transition-all"
+                    className="mt-auto pt-5 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white text-xs font-semibold px-4 py-2.5 hover:ring-2 hover:ring-primary/40 transition-all"
                   >
                     View Case Study →
                   </Link>

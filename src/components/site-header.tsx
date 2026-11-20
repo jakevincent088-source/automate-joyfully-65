@@ -5,7 +5,6 @@ const nav = [
   { to: "/", label: "Home", exact: true },
   { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
-  { to: "/blog", label: "Blog" },
 ] as const;
 
 const exploreItems = [

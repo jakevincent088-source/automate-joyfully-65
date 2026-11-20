@@ -24,7 +24,6 @@
   --animate-node-pulse: node-pulse 3s ease-in-out infinite;
   --animate-count-up: count-up 0.6s ease-out both;
   --animate-flow-dash: flow-dash 2s linear infinite;
-  --animate-marquee: marquee 40s linear infinite;
   --animate-gradient-shift: gradient-shift 12s ease infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
@@ -43,10 +42,6 @@
   }
   @keyframes flow-dash {
     to { stroke-dashoffset: -20; }
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
   }
   @keyframes gradient-shift {
     0%, 100% { background-position: 0% 50%; }

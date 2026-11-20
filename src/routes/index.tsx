@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { Counter } from "../components/counter";
 import { HeroDashboard } from "../components/hero-dashboard";
 
-const resumeUrl = "/images/Jake_AI_Automation_CV.pdf";
+const resumeUrl = "/images/Jake_Talaba_AI_Automation_Resume.pdf";
 const jakePhotoUrl = "/images/Jake_Formal_Photo.jpg";
 
 export const Route = createFileRoute("/")({
@@ -75,15 +74,11 @@ const services = [
 ];
 
 const process = [
-  { n: "01", t: "Discovery Call", d: "Understand your business, goals, and bottlenecks." },
-  { n: "02", t: "Business Analysis", d: "Map every workflow, tool, and data flow currently in play." },
-  { n: "03", t: "Workflow Planning", d: "Design the target-state processes and automation architecture." },
-  { n: "04", t: "Solution Architecture", d: "Select tools, integrations, data models, and safeguards." },
-  { n: "05", t: "Development", d: "Build automations, CRM, funnels, AI agents, and integrations." },
-  { n: "06", t: "Testing", d: "Simulate real-world scenarios and validate every branch." },
-  { n: "07", t: "Deployment", d: "Roll out with training, monitoring, and safe rollbacks." },
-  { n: "08", t: "Documentation", d: "Deliver SOPs, diagrams, and video walkthroughs." },
-  { n: "09", t: "Optimization", d: "Continuous iteration based on real usage & metrics." },
+  { n: "01", t: "Discovery Call" },
+  { n: "02", t: "Business Analysis" },
+  { n: "03", t: "Workflow Planning" },
+  { n: "04", t: "Solution Architecture" },
+  { n: "05", t: "Development" },
 ];
 
 const projects = [
@@ -116,29 +111,25 @@ const projects = [
   },
 ];
 
-const techItems: { name: string; slug: string | null }[] = [
-  { name: "ChatGPT", slug: "openai" },
-  { name: "Claude", slug: "anthropic" },
-  { name: "Gemini", slug: "googlegemini" },
-  { name: "GoHighLevel", slug: null },
-  { name: "Zapier", slug: "zapier" },
-  { name: "Make", slug: "make" },
-  { name: "n8n", slug: "n8n" },
-  { name: "Salesforce", slug: "salesforce" },
-  { name: "HubSpot", slug: "hubspot" },
-  { name: "Zendesk", slug: "zendesk" },
-  { name: "Notion", slug: "notion" },
-  { name: "Airtable", slug: "airtable" },
-  { name: "Slack", slug: "slack" },
-  { name: "Twilio", slug: "twilio" },
-  { name: "Stripe", slug: "stripe" },
-  { name: "Calendly", slug: "calendly" },
-  { name: "Google", slug: "google" },
-  { name: "Gmail", slug: "gmail" },
-  { name: "WhatsApp", slug: "whatsapp" },
-  { name: "Discord", slug: "discord" },
-  { name: "ClickUp", slug: "clickup" },
-  { name: "Pabbly", slug: null },
+const techItems = [
+  { name: "Slack", logo: "slack.svg" },
+  { name: "Twilio", logo: "twilio.svg" },
+  { name: "Stripe", logo: "stripe.svg" },
+  { name: "Calendly", logo: "calendly.svg" },
+  { name: "Google Workspace", logo: "google-workspace.png" },
+  { name: "WhatsApp", logo: "whatsapp.svg" },
+  { name: "ChatGPT", logo: "chatgpt.svg" },
+  { name: "Claude", logo: "claude.svg" },
+  { name: "Gemini", logo: "gemini.svg" },
+  { name: "GoHighLevel", logo: "gohighlevel.png" },
+  { name: "Zapier", logo: "zapier.svg" },
+  { name: "Make", logo: "make.svg" },
+  { name: "n8n", logo: "n8n.svg" },
+  { name: "Salesforce", logo: "salesforce.svg" },
+  { name: "HubSpot", logo: "hubspot.svg" },
+  { name: "Zendesk", logo: "zendesk.svg" },
+  { name: "Notion", logo: "notion.svg" },
+  { name: "Airtable", logo: "airtable.svg" },
 ];
 
 
@@ -152,19 +143,7 @@ const faqs = [
   { q: "Do you provide post-launch support?", a: "Yes — documentation, SOPs, monitoring dashboards, and continuous optimization retainers are available." },
 ];
 
-const screens = [
-  "/images/dashboard.png",
-  "/images/crm.png",
-  "/images/workflow.png",
-  "/images/agent.png",
-  "/images/lead.png",
-  "/images/lead2.png",
-  "/images/Zapier1.png",
-  "/images/zapier2.png",
-];
-
 function HomePage() {
-  const [lightbox, setLightbox] = useState<string | null>(null);
   return (
     <div className="relative">
       {/* HERO */}
@@ -236,12 +215,11 @@ function HomePage() {
               </a>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { v: 3, s: "+", l: "Yrs Customer Support" },
-                { v: 10, s: "+", l: "CRM Systems Built" },
-                { v: 30, s: "+", l: "Workflows Built" },
-                { v: 98, s: "%", l: "CSAT & QA Score" },
+                { v: 3, s: " Years", l: "Customer Support" },
+                { v: 4, s: "", l: "Automation Tools Used" },
+                { v: 20, s: "+", l: "Workflows Built" },
               ].map((s) => (
                 <div key={s.l} className="rounded-2xl border border-border bg-card/40 backdrop-blur p-4">
                   <div className="text-3xl font-black gradient-text">
@@ -263,7 +241,7 @@ function HomePage() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <section id="about" className="max-w-7xl mx-auto border-y border-primary/15 bg-primary/[0.035] px-6 py-20 md:py-28">
         <div className="grid lg:grid-cols-5 gap-10 items-start">
           <div className="lg:col-span-3">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary">
@@ -349,6 +327,7 @@ function HomePage() {
       </section>
 
       {/* SERVICES */}
+      <div className="border-y border-secondary/15 bg-secondary/[0.035]">
       <Section eyebrow="Services" title={<>Six modules. <span className="gradient-text">One operating system.</span></>}>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((s) => (
@@ -382,16 +361,18 @@ function HomePage() {
           ))}
         </div>
       </Section>
+      </div>
 
       {/* FEATURED PROJECTS */}
-      <Section eyebrow="Portfolio" title={<>Featured <span className="gradient-text">systems shipped</span>.</>}>
+      <div className="border-y border-accent/15 bg-accent/[0.035]">
+      <Section eyebrow="Portfolio" title={<>WORKFLOW AND INTEGRATION PROJECTS</>}>
         <div className="grid md:grid-cols-3 gap-4">
           {projects.map((p) => {
             const videoId = p.videoId;
             return (
               <div
                 key={p.slug}
-                className="group relative rounded-2xl border border-border bg-card/50 overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
+                className="group relative rounded-2xl border border-border bg-card/70 overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
               >
                 {videoId ? (
                   <a
@@ -438,7 +419,7 @@ function HomePage() {
                       </span>
                     ))}
                   </div>
-                  <div className="mt-4 text-xs font-semibold text-primary group-hover:gap-2 flex items-center gap-1 transition-all">
+                  <div className="mt-auto pt-5 text-xs font-semibold text-primary group-hover:gap-2 flex items-center gap-1 transition-all">
                     View case study →
                   </div>
                 </Link>
@@ -447,94 +428,41 @@ function HomePage() {
           })}
         </div>
         <div className="mt-8 text-center">
-          <Link to="/portfolio" className="text-sm text-muted-foreground hover:text-foreground">
-            View all projects →
+          <Link
+            to="/portfolio"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-primary/40 bg-card/75 px-7 py-3.5 text-sm font-semibold text-foreground shadow-lg shadow-primary/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/60 hover:shadow-xl hover:shadow-accent/20"
+          >
+            <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-foreground/15 to-transparent transition-transform duration-1000 group-hover:translate-x-[500%]" />
+            <span className="relative">View All Projects</span>
+            <span aria-hidden="true" className="relative text-primary transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
         </div>
-      </Section>
-
-      {/* WORKFLOW SHOWCASE */}
-      <Section eyebrow="Workflow Library" title={<>Real Screens of <span className="gradient-text">Workflow I built</span>.</>}>
-        <div className="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex gap-5 w-max animate-marquee group-hover:[animation-play-state:paused]">
-            {[...screens, ...screens].map((src, i) => (
-              <button
-                key={`shot-${i}`}
-                type="button"
-                onClick={() => setLightbox(src)}
-                aria-label="View workflow screenshot"
-                className="relative shrink-0 w-[380px] rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden hover:border-accent/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/30 transition-all"
-              >
-                <div className="aspect-video overflow-hidden bg-background/40">
-                  <img
-                    src={src}
-                    alt="Workflow screenshot"
-                    loading="lazy"
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* MARQUEE TOOLS ROW */}
-        <div className="mt-10 relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
-          <div className="flex gap-4 w-max animate-marquee">
-            {[...techItems, ...techItems].map((t, i) => (
+        <div className="mt-12">
+          <div className="mb-5 text-center text-xs font-mono uppercase tracking-widest text-muted-foreground">Tools &amp; Integrations</div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {techItems.map((tool) => (
               <div
-                key={`tools-${i}`}
-                className="flex items-center gap-3 rounded-xl border border-border bg-card/60 backdrop-blur px-5 py-3 min-w-max hover:border-primary/50 transition-colors"
+                key={tool.name}
+                className="group flex min-h-20 items-center gap-3 rounded-xl border border-border bg-background/70 px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:bg-card hover:shadow-lg hover:shadow-primary/10"
               >
-                {t.slug ? (
-                  <img src={`https://cdn.simpleicons.org/${t.slug}`} alt="" className="size-6" loading="lazy" />
-                ) : (
-                  <span className="size-6 rounded-md bg-gradient-to-br from-primary via-secondary to-accent" />
-                )}
-                <span className="text-sm font-semibold text-foreground whitespace-nowrap">{t.name}</span>
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-border bg-background/80 p-2">
+                  <img
+                    src={`/images/tool-logos/${tool.logo}`}
+                    alt={`${tool.name} logo`}
+                    loading="lazy"
+                    className="size-full object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-110"
+                  />
+                </span>
+                <span className="text-sm font-medium leading-tight text-foreground">{tool.name}</span>
               </div>
             ))}
           </div>
         </div>
-
-        <div className="mt-10 flex justify-center">
-          <Link
-            to="/workflows"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent text-white text-sm font-semibold px-7 py-3.5 hover:ring-2 hover:ring-primary/40 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-primary/30 transition-all"
-          >
-            View blueprints →
-          </Link>
-        </div>
       </Section>
-
-      {lightbox && (
-        <div
-          className="fixed inset-0 z-[100] grid place-items-center bg-background/90 backdrop-blur-sm p-4 animate-fade-in"
-          onClick={() => setLightbox(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="relative max-w-6xl w-full animate-scale-in" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              onClick={() => setLightbox(null)}
-              aria-label="Close preview"
-              className="absolute -top-11 right-0 rounded-full border border-border bg-card/80 px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground hover:border-primary/60 transition-colors"
-            >
-              Close ✕
-            </button>
-            <img
-              src={lightbox}
-              alt="Workflow screenshot enlarged"
-              className="w-full max-h-[85vh] object-contain rounded-2xl border border-border shadow-2xl shadow-primary/20"
-            />
-          </div>
-        </div>
-      )}
-
-
+      </div>
 
       {/* PROCESS */}
+      <div className="border-y border-primary/15 bg-primary/[0.03]">
       <Section eyebrow="Process" title={<>From discovery to <span className="gradient-text">continuous optimization</span>.</>}>
         <div className="relative">
           {/* Horizontal connecting rail with traveling light (lg+) */}
@@ -554,50 +482,23 @@ function HomePage() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-9 gap-4 lg:gap-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
             {process.map((p, idx) => (
               <div
                 key={p.n}
                 style={{ animationDelay: `${idx * 80}ms` }}
-                className="group relative rounded-xl border border-border bg-card/50 backdrop-blur p-4 hover:border-primary/60 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 animate-fade-in"
+                className="group relative flex min-h-36 items-center justify-center rounded-xl border border-border bg-card/60 p-5 text-center transition-all duration-300 animate-fade-in hover:-translate-y-1 hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/20"
               >
-                <div className="absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/15 via-secondary/15 to-accent/15 transition-opacity duration-500" />
-                <div className="relative flex lg:justify-center">
-                  {/* Pulsing ring behind number */}
-                  <span className="absolute lg:left-1/2 lg:-translate-x-1/2 top-0 size-12 rounded-full bg-accent/40 animate-pulse-ring" />
-                  <div className="relative size-12 rounded-full bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center text-white font-black text-sm shadow-lg shadow-secondary/40 group-hover:scale-110 transition-transform">
-                    {p.n}
-                  </div>
-                </div>
-                <div className="mt-4 text-center text-xs font-bold text-foreground uppercase tracking-wide">{p.t}</div>
-                <div className="mt-1.5 text-center text-[11px] text-muted-foreground leading-snug">{p.d}</div>
+                <div className="absolute inset-0 -z-10 rounded-xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br from-primary/15 via-secondary/15 to-accent/15" />
+                <span aria-hidden="true" className="absolute left-1/2 top-3 size-2 -translate-x-1/2 rounded-full bg-accent shadow-lg shadow-accent/40 transition-all duration-300 group-hover:scale-150" />
+                <div className="text-sm font-bold uppercase tracking-wide text-foreground">{p.t}</div>
               </div>
             ))}
           </div>
         </div>
       </Section>
+      </div>
 
-
-      {/* TESTIMONIALS PLACEHOLDER */}
-      <Section eyebrow="Testimonials" title={<>What clients <span className="gradient-text">will say</span>.</>}>
-        <div className="grid md:grid-cols-3 gap-4">
-          {[1,2,3].map((i) => (
-            <div key={i} className="rounded-2xl border border-dashed border-border bg-card/30 p-6">
-              <div className="text-xs font-mono uppercase tracking-widest text-muted">Placeholder</div>
-              <div className="mt-3 text-muted-foreground italic">
-                &ldquo;Client testimonial coming soon. Reserved for launch partners currently in build.&rdquo;
-              </div>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="size-9 rounded-full bg-gradient-to-br from-primary to-secondary" />
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Future Partner</div>
-                  <div className="text-[11px] text-muted">Founder · Industry</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
 
       {/* FAQ */}
       <Section eyebrow="FAQ" title={<>Common <span className="gradient-text">questions</span>.</>}>
