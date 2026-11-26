@@ -54,7 +54,7 @@ function About() {
             <GlassCard>
               <div className="text-xs font-mono uppercase tracking-widest text-primary">Focus Areas</div>
               <ul className="mt-3 space-y-2 text-sm text-foreground">
-                {["AI Automation", "Workflow Engineering", "GoHighLevel", "CRM Optimization", "Customer Support Systems", "Sales Funnels", "Appointment Systems", "Email & SMS Automation"].map((s) => (
+                {["AI Automation", "GoHighLevel", "CRM Optimization", "Customer Support Systems", "Sales Funnels", "Appointment Systems", "Email & SMS Automation"].map((s) => (
                   <li key={s} className="flex items-center gap-2"><span className="size-1.5 rounded-full bg-accent" />{s}</li>
                 ))}
               </ul>

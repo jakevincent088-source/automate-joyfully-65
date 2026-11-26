@@ -21,7 +21,7 @@ const modules = [
     grad: "from-primary to-secondary",
   },
   {
-    tag: "02 / Workflow Automation",
+    tag: "02 / OPS",
     title: "Business Process Engineering",
     items: ["Business Process Automation", "Lead Routing", "Internal Workflows", "Approval Systems", "Task Automation", "Notifications", "Operational Automation"],
     grad: "from-secondary to-accent",

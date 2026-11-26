@@ -17,7 +17,6 @@ const posts = [
   { t: "5 Automations Every Small Business Should Ship First", cat: "Automation", read: "6 min" },
   { t: "GoHighLevel: A Non-Marketer's Setup Guide", cat: "GoHighLevel", read: "12 min" },
   { t: "How to Structure a CRM That Actually Gets Used", cat: "CRM", read: "8 min" },
-  { t: "Designing Workflows That Don't Break in Production", cat: "Workflow Design", read: "9 min" },
   { t: "AI Chatbots for Customer Support — What Works", cat: "Support AI", read: "7 min" },
   { t: "Zapier Patterns for Reliable Business Automation", cat: "Zapier", read: "10 min" },
   { t: "Prompt Engineering for Business Ops", cat: "Prompt Engineering", read: "8 min" },
